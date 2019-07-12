@@ -127,9 +127,9 @@
     <PackageReference Include="Antlr3.Runtime">
       <Version>3.5.1</Version>
     </PackageReference>
-    <PackageReference Include="Korzh.EasyQuery.Db" Version="5.2.0-beta2" />
-    <PackageReference Include="Korzh.EasyQuery.DataExport" Version="5.2.0-beta2" />
-    <PackageReference Include="Korzh.EasyQuery.AspNet4" Version="5.2.0-beta2" />
+    <PackageReference Include="Korzh.EasyQuery.Db" Version="5.2.0-beta3" />
+    <PackageReference Include="Korzh.EasyQuery.DataExport" Version="5.2.0-beta3" />
+    <PackageReference Include="Korzh.EasyQuery.AspNet4" Version="5.2.0-beta3" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
