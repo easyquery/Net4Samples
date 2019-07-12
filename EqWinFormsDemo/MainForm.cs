@@ -186,7 +186,7 @@ namespace EqWinFormsDemo
             teSQL.Clear();
             try {
                 SqlQueryBuilder builder = new SqlQueryBuilder(query1);
-                builder.Formats.SetDefaultFormats(FormatType.MsAccess);
+                builder.Formats.SetDefaultFormats(FormatType.MsSqlServer);
 
                 if (builder.CanBuild) {
                     builder.BuildSQL();

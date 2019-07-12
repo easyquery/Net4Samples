@@ -220,8 +220,8 @@ namespace EqWpfDemo {
                     }
                 }
             }
-            catch {
-                MessageBox.Show("Specified query file is not valid!");
+            catch (Exception ex) {
+                MessageBox.Show("Specified query file is not valid:\n" + ex.Message);
             }
         }
 
