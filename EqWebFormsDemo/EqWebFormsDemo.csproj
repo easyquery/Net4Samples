@@ -392,12 +392,6 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Korzh.EasyQuery.AspNet4\Korzh.EasyQuery.AspNet4.csproj">
-      <Project>{b99af19b-2b95-4350-b517-1a5eb070e6d3}</Project>
-      <Name>Korzh.EasyQuery.AspNet4</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <PropertyGroup>

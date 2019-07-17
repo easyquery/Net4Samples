@@ -82,12 +82,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Korzh.EasyQuery.WinForms\Korzh.EasyQuery.WinForms.csproj">
-      <Project>{d9b0341d-12ad-4c77-9d29-05cdb143f72c}</Project>
-      <Name>Korzh.EasyQuery.WinForms</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
