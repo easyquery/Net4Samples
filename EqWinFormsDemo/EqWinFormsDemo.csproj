@@ -33,9 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Korzh.EasyQuery.Db" Version="5.2.0-beta3" />
-    <PackageReference Include="Korzh.EasyQuery.DataExport" Version="5.2.0-beta3" />
-    <PackageReference Include="Korzh.EasyQuery.WinForms" Version="5.2.0-beta3" />
+    <PackageReference Include="Korzh.EasyQuery.Db" Version="5.2.0-rc1" />
+    <PackageReference Include="Korzh.EasyQuery.DataExport" Version="5.2.0-rc1" />
+    <PackageReference Include="Korzh.EasyQuery.WinForms" Version="5.2.0-rc1" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainForm.cs">
@@ -80,6 +80,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Korzh.EasyQuery.WinForms\Korzh.EasyQuery.WinForms.csproj">
+      <Project>{d9b0341d-12ad-4c77-9d29-05cdb143f72c}</Project>
+      <Name>Korzh.EasyQuery.WinForms</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

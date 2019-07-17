@@ -61,9 +61,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="System.ComponentModel" Version="4.3.0" />
-    <PackageReference Include="Korzh.EasyQuery.Db" Version="5.2.0-beta3" />
-    <PackageReference Include="Korzh.EasyQuery.DataExport" Version="5.2.0-beta3" />
-    <PackageReference Include="Korzh.EasyQuery.Wpf" Version="5.2.0-beta3" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="Korzh.EasyQuery.Db" Version="5.2.0-rc1" />
+    <PackageReference Include="Korzh.EasyQuery.DataExport" Version="5.2.0-rc1" />
+    <PackageReference Include="Korzh.EasyQuery.Wpf" Version="5.2.0-rc1" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -125,7 +126,19 @@
       <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Korzh.EasyQuery.WPF\Korzh.EasyQuery.Wpf.csproj">
+      <Project>{14193d20-467d-4a7f-af46-433b43acddf0}</Project>
+      <Name>Korzh.EasyQuery.Wpf</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App_Data\NWindSQL.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -1788,7 +1788,7 @@
             <Button Focusable="False" Margin="5" HorizontalAlignment="Right" Width="81" Click="Clear_Click" Content="Clear"/>
             <Button Focusable="False" Margin="5" HorizontalAlignment="Right" Width="81" Click="Save_Click" Content="Save Query"/>
             <Button Focusable="False" Margin="5" HorizontalAlignment="Right" Width="81" Click="Load_Click" Content="Load Query"/>
-            <Button Focusable="False" Margin="5,25,5,5" Width="81" Click="Build_Click" Content="Execute Query" Height="51" />
+            <Button x:Name="buttonExecute" Focusable="False" Margin="5,25,5,5" Width="81" Click="Execute_Click" Content="Execute Query" Height="51" IsEnabled="False" />
         </StackPanel>
         
         <Grid Margin="5" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
@@ -1802,7 +1802,7 @@
                 <TextBlock FontWeight="Bold" Text="SQL" FontFamily="Segoe UI Light" FontSize="24" Foreground="#FF4F4F4F" Margin="16,0,1,7" Grid.Row="1"/>
             </Border>
             <TextBox Grid.Row="2" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" 
-                    Background="White" x:Name="textBoxSql" BorderBrush="{x:Null}" BorderThickness="0" Foreground="#FF4F4F4F" Padding="0" Margin="15,0,15,15" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
+                    Background="White" x:Name="textBoxSql" BorderBrush="{x:Null}" BorderThickness="0" Foreground="#FF4F4F4F" Padding="0" Margin="15,0,15,15" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" TextChanged="TextBoxSql_TextChanged"/>
             <Border BorderThickness="0" Margin="0" Background="#FFA8ABAD"/>
         </Grid>
 
@@ -1832,7 +1832,7 @@
 
                 </Grid>
             </Border>
-            <Button Visibility="Collapsed" Content="Update Result" Grid.Column="1" Margin="40,0,15,0" Grid.Row="1" BorderBrush="{x:Null}" BorderThickness="0" Foreground="#FF237901" FontFamily="Segoe UI" FontSize="14.667" VerticalAlignment="Center" HorizontalAlignment="Right" Background="{x:Null}" Style="{StaticResource UpdateResultButton}" Padding="7,0,0,0" Click="Build_Click" />
+            <Button Visibility="Collapsed" Content="Update Result" Grid.Column="1" Margin="40,0,15,0" Grid.Row="1" BorderBrush="{x:Null}" BorderThickness="0" Foreground="#FF237901" FontFamily="Segoe UI" FontSize="14.667" VerticalAlignment="Center" HorizontalAlignment="Right" Background="{x:Null}" Style="{StaticResource UpdateResultButton}" Padding="7,0,0,0" Click="Execute_Click" />
             <ProgressBar VerticalAlignment="Top" Height="15" x:Name="progressBar" Grid.Row="2" IsIndeterminate="True" Visibility="Collapsed" Grid.ColumnSpan="2" Margin="15,15,15,0">
                 <ProgressBar.BorderBrush>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

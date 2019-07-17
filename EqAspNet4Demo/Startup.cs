@@ -1,7 +1,9 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-using EqAspNet4Demo.Models;
+using System.Data.Entity.Migrations;
+
+using EqAspNet4Demo.Migrations;
 
 [assembly: OwinStartupAttribute(typeof(EqAspNet4Demo.Startup))]
 namespace EqAspNet4Demo
@@ -12,10 +14,12 @@ namespace EqAspNet4Demo
         {
             ConfigureAuth(app);
 
-            using (var db = new ApplicationDbContext())
-            {
-                db.Database.Initialize(true);
-            }
+            var databaseMigrator = new DbMigrator(new Configuration());
+            databaseMigrator.Update();
+
+            IdentityHelper.SeedEqManagerRole();
+            IdentityHelper.SeedDefaultUser();
         }
+
     }
 }

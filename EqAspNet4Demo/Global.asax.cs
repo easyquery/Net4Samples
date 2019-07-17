@@ -21,6 +21,14 @@ namespace EqAspNet4Demo
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             GlobalConfiguration.Configuration.EnsureInitialized();
+
         }
+
+        protected void Application_PostAuthorizeRequest()
+        {
+            //here we enable session for WebApi Controllers
+            System.Web.HttpContext.Current.SetSessionStateBehavior(System.Web.SessionState.SessionStateBehavior.Required);
+        }
+
     }
 }

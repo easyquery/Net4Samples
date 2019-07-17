@@ -1,9 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Routing;
+using System.Web.Http.WebHost;
+using System.Web.Routing;
+using System.Web.SessionState;
+
+using Korzh.EasyQuery.Services;
 
 namespace EqAspNet4Demo
 {
@@ -21,6 +27,11 @@ namespace EqAspNet4Demo
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            // Register you exportes here
+            // to make export works
+            EasyQueryManagerBase.RegisterExporter("csv", new CsvDataExporter());
+            EasyQueryManagerBase.RegisterExporter("excel-html", new ExcelHtmlDataExporter());
 
         }
     }

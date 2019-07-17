@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EqWinFormsDemo", "EqWinForm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EqWpfDemo", "EqWpfDemo\EqWpfDemo.csproj", "{A1ACB19F-E36C-43B8-9BC6-BA79DF916366}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EqWebFormsDemo", "EqWebFormsDemo\EqWebFormsDemo.csproj", "{0907F31A-03D6-4A16-A16B-AB3AFC0C4E50}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A1ACB19F-E36C-43B8-9BC6-BA79DF916366}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1ACB19F-E36C-43B8-9BC6-BA79DF916366}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1ACB19F-E36C-43B8-9BC6-BA79DF916366}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0907F31A-03D6-4A16-A16B-AB3AFC0C4E50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0907F31A-03D6-4A16-A16B-AB3AFC0C4E50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0907F31A-03D6-4A16-A16B-AB3AFC0C4E50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0907F31A-03D6-4A16-A16B-AB3AFC0C4E50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

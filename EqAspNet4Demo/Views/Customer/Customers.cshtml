@@ -1,0 +1,89 @@
+﻿@using Korzh.EasyQuery.AspNet;
+@using X.PagedList;
+@using X.PagedList.Mvc.Common;
+@using X.PagedList.Mvc;
+@using EqAspNet4Demo.Models;
+@{
+    ViewData["Title"] = "Full-text Search";
+    ViewData["MenuTitle"] = "Full-text Search";
+}
+
+<div class="container-fluid px-5">
+    <h4>Customers</h4>
+    @using (Html.BeginForm("Index", "Customer", FormMethod.Get, new { id = "searchForm", @style="padding-bottom: 10px" }))
+    {
+        <div class="row">
+            <div class="col-md-8">
+                <input class="form-control" name="text" value="@ViewBag.Text" placeholder="Enter text for full text search and press Enter">
+            </div>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-success" onclick="document.getElementById('searchForm').submit()">Search</button>
+                @Html.ActionLink("Clear", "Index", "Customer")
+            </div>
+        </div>
+    }
+
+
+    <table class="table table-striped">
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Contact name
+            </th>
+            <th>
+                Company name
+            </th>
+            <th>
+                Contact title
+            </th>
+            <th>
+                City
+            </th>
+            <th>
+                Country
+            </th>
+            <th>
+                Fax
+            </th>
+            <th>
+                Phone
+            </th>
+        </tr>
+        @foreach (var item in (IEnumerable<Customer>)ViewBag.PageOfCustomers)
+        {
+            <tr>
+                <td>
+                    @Html.EqHighLightFor(item.Id, (string)@ViewBag.Text)
+                </td>
+                <td>
+                    @Html.EqHighLightFor(item.ContactName, (string)@ViewBag.Text)
+                </td>
+                <td>
+                    @Html.EqHighLightFor(item.CompanyName, (string)@ViewBag.Text)
+                </td>
+                <td>
+                    @Html.EqHighLightFor(item.ContactTitle, (string)@ViewBag.Text)
+                </td>
+                <td>
+                    @Html.EqHighLightFor(item.City, (string)@ViewBag.Text)
+                </td>
+                <td>
+                    @Html.EqHighLightFor(item.Country, (string)@ViewBag.Text)
+                </td>
+                <td>
+                    @Html.EqHighLightFor(item.Fax, (string)@ViewBag.Text)
+                </td>
+                <td>
+                    @Html.EqHighLightFor(item.Phone, (string)@ViewBag.Text)
+                </td>
+            </tr>
+        }
+    </table>
+    @Html.PagedListPager((IPagedList)ViewBag.PageOfCustomers, page => Url.Action("Index", "Customer", new { page, text = ViewBag.Text }), new PagedListRenderOptions
+       {
+           LiElementClasses = new string[] { "page-item" },
+           PageClasses = new string[] { "page-link" }
+       })
+</div>

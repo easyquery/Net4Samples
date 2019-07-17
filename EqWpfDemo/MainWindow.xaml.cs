@@ -84,11 +84,11 @@ namespace EqWpfDemo {
             builder.Formats.DateFormat = "MM/dd/yyyy";
             builder.Formats.DateTimeFormat = "MM/dd/yyyy HH:mm";
 
-            if (!builder.CanBuild)
-                return;
+            if (!builder.CanBuild) return;
             builder.BuildSQL();
             string sql = builder.Result.SQL;
             textBoxSql.Text = sql;
+            buttonExecute.IsEnabled = !string.IsNullOrEmpty(sql);
         }
 
         private DbQuery query;
@@ -100,7 +100,7 @@ namespace EqWpfDemo {
 
         private Stream LoadEmbededResource(string resourceFileName) {
             System.Reflection.Assembly a = System.Reflection.Assembly.GetExecutingAssembly();
-            return a.GetManifestResourceStream("WpfDemoCS.res." + resourceFileName);
+            return a.GetManifestResourceStream("EqWpfDemo.res." + resourceFileName);
         }
 
         private void CreateFileByResource(string fileName) {
@@ -118,7 +118,7 @@ namespace EqWpfDemo {
         }
 
 
-        private void Build_Click(object sender, RoutedEventArgs e) {            
+        private void Execute_Click(object sender, RoutedEventArgs e) {            
             try {
                 string sql = textBoxSql.Text;
                 CheckConnection();
@@ -140,6 +140,12 @@ namespace EqWpfDemo {
             }
         }
 
+        private void TextBoxSql_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            buttonExecute.IsEnabled = !string.IsNullOrEmpty(textBoxSql.Text);
+        }
+
+
         private void Clear_Click(object sender, RoutedEventArgs e) {
             Clear();
             PanelExport.Visibility = Visibility.Collapsed;
@@ -148,7 +154,8 @@ namespace EqWpfDemo {
         private void Clear() {
             queryPanel.Query.Clear();
             textBoxSql.Clear();
-            datGrid.ItemsSource = null;            
+            datGrid.ItemsSource = null;
+            buttonExecute.IsEnabled = false;
         }
 
         private void queryPanel_ListRequest(object sender, ListRequestEventArgs e) {

@@ -127,9 +127,13 @@
     <PackageReference Include="Antlr3.Runtime">
       <Version>3.5.1</Version>
     </PackageReference>
-    <PackageReference Include="Korzh.EasyQuery.Db" Version="5.2.0-beta3" />
-    <PackageReference Include="Korzh.EasyQuery.DataExport" Version="5.2.0-beta3" />
-    <PackageReference Include="Korzh.EasyQuery.AspNet4" Version="5.2.0-beta3" />
+    <PackageReference Include="X.PagedList.Mvc">
+      <Version>7.6.0</Version>
+    </PackageReference>
+    <PackageReference Include="Korzh.EasyQuery.Db" Version="5.2.0-rc1" />
+    <PackageReference Include="Korzh.EasyQuery.Linq" Version="5.2.0-rc1" />
+    <PackageReference Include="Korzh.EasyQuery.DataExport" Version="5.2.0-rc1" />
+    <PackageReference Include="Korzh.EasyQuery.AspNet4" Version="5.2.0-rc1" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -140,15 +144,25 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="ConfigurationManagerExtensions.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\EqApiController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\EasyQuery\AdvancedSearchController.cs" />
+    <Compile Include="Controllers\EasyQuery\EasyReportController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Data\ApplicationDbContext.cs" />
     <Compile Include="Data\DbInitalizer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="IdentityHelper.cs" />
+    <Compile Include="Migrations\201907161537049_InitialCreate.cs" />
+    <Compile Include="Migrations\201907161537049_InitialCreate.Designer.cs">
+      <DependentUpon>201907161537049_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NWind\Category.cs" />
     <Compile Include="Models\NWind\Customer.cs" />
@@ -158,33 +172,22 @@
     <Compile Include="Models\NWind\Product.cs" />
     <Compile Include="Models\NWind\Shipper.cs" />
     <Compile Include="Models\NWind\Supplier.cs" />
+    <Compile Include="Models\Report.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\DefaultReportGenerator.cs" />
+    <Compile Include="Services\EqSessionCachingService.cs" />
+    <Compile Include="Services\ReportStore.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\EqDemoDb.sql" />
     <Content Include="App_Data\NWindSQL.xml" />
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\adhoc-reporting.css" />
+    <Content Include="Content\root.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.3.1.js" />
-    <Content Include="Scripts\jquery-3.3.1.min.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -198,8 +201,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -222,19 +223,44 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\AdvancedSearch.cshtml" />
+    <Content Include="Views\Home\AdHocReporting.cshtml" />
+    <Content Include="Views\Order\Orders.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Views\Order\_OrderListPartial.cshtml" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Korzh.EasyQuery.AspNet4\Korzh.EasyQuery.AspNet4.csproj">
+      <Project>{b99af19b-2b95-4350-b517-1a5eb070e6d3}</Project>
+      <Name>Korzh.EasyQuery.AspNet4</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Korzh.EasyQuery.EntityFramework6\Korzh.EasyQuery.EntityFramework6.csproj">
+      <Project>{0f86eb0c-46eb-4fbc-be47-205f7fc4e5b4}</Project>
+      <Name>Korzh.EasyQuery.EntityFramework6</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\dm-adhoc-reporting\queries\59fc2a73-0e6c-447c-9aae-a33f8fec5a9b.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\dm-adhoc-reporting\queries\bb0b3e5a-294e-4088-acaa-1ff1f3731843.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\dm-adhoc-reporting\queries\fee014cd-ad47-4a33-9c16-4cdf903bfbd2.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201907161537049_InitialCreate.resx">
+      <DependentUpon>201907161537049_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Customer\Customers.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

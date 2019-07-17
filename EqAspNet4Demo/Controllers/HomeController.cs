@@ -6,31 +6,32 @@ using System.Web.Mvc;
 
 namespace EqAspNet4Demo.Controllers
 {
+    [Route("/")]
     public class HomeController : Controller
     {
+        [Route("")]
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult About()
+        [Route("privacy")]
+        public ActionResult Privacy()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
+        [Route("advanced-search")]
         public ActionResult AdvancedSearch()
         {
-            ViewBag.Message = "Advanced search EasyQuery page.";
 
+            return View();
+        }
+
+        [Authorize]
+        [Route("adhoc-reporting")]
+        public ActionResult AdHocReporting()
+        {
             return View();
         }
     }
