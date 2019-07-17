@@ -134,6 +134,8 @@
     <PackageReference Include="Korzh.EasyQuery.Linq" Version="5.2.0-rc1" />
     <PackageReference Include="Korzh.EasyQuery.DataExport" Version="5.2.0-rc1" />
     <PackageReference Include="Korzh.EasyQuery.AspNet4" Version="5.2.0-rc1" />
+    <PackageReference Include="Korzh.EasyQuery.EntityFramework6" Version="5.2.0-rc1"  />
+
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -234,16 +236,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\Korzh.EasyQuery.AspNet4\Korzh.EasyQuery.AspNet4.csproj">
-      <Project>{b99af19b-2b95-4350-b517-1a5eb070e6d3}</Project>
-      <Name>Korzh.EasyQuery.AspNet4</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\Korzh.EasyQuery.EntityFramework6\Korzh.EasyQuery.EntityFramework6.csproj">
-      <Project>{0f86eb0c-46eb-4fbc-be47-205f7fc4e5b4}</Project>
-      <Name>Korzh.EasyQuery.EntityFramework6</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\dm-adhoc-reporting\queries\59fc2a73-0e6c-447c-9aae-a33f8fec5a9b.json" />

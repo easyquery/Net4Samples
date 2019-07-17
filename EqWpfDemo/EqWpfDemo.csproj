@@ -132,12 +132,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\Korzh.EasyQuery.WPF\Korzh.EasyQuery.Wpf.csproj">
-      <Project>{14193d20-467d-4a7f-af46-433b43acddf0}</Project>
-      <Name>Korzh.EasyQuery.Wpf</Name>
-    </ProjectReference>
-  </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <None Include="App_Data\NWindSQL.xml">
