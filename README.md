@@ -1,6 +1,6 @@
 # EasyQuery .NET Framework Samples
 
-This repository contains several .NET Framework projects which demonstrate how to use [EasyQuery library](https://korzh.com/easyquery) in different .NET applications (ASP.NET, WinFroms and WPF).
+This repository contains several .NET Framework projects which demonstrate how to use [EasyQuery library](https://korzh.com/easyquery) in different .NET applications (ASP.NET, ASP.NET WebForms, WinFroms and WPF).
 
 ## Prerequisites
 
