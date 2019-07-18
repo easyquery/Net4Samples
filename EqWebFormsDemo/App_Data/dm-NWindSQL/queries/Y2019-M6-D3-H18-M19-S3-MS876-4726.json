@@ -1,0 +1,55 @@
+﻿{
+  "id": "Y2019-M6-D3-H18-M19-S3-MS876-4726",
+  "name": "Total sales last year",
+  "desc": null,
+  "cols": [
+    {
+      "cptn": "Country",
+      "srt": 0,
+      "expr": {
+        "tag": 2,
+        "dtype": 1,
+        "kind": 2,
+        "id": "Customer.Country"
+      }
+    },
+    {
+      "cptn": "Unit price Sum",
+      "srt": 0,
+      "expr": {
+        "tag": 4,
+        "dtype": 8,
+        "kind": 0,
+        "func": "SUM",
+        "distinct": false,
+        "args": [
+          {
+            "tag": 2,
+            "dtype": 8,
+            "kind": 2,
+            "id": "OrderDetail.UnitPrice"
+          }
+        ]
+      }
+    }
+  ],
+  "justsortcols": [],
+  "root": {
+    "linking": 3,
+    "conds": [
+      {
+        "tag": 1,
+        "op": "DateWithinPrevYear",
+        "exprs": [
+          {
+            "tag": 2,
+            "dtype": 12,
+            "kind": 2,
+            "id": "Order.OrderDate"
+          }
+        ]
+      }
+    ]
+  },
+  "extraData": {}
+}
