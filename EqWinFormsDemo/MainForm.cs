@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -37,18 +38,17 @@ namespace EqWinFormsDemo
         private System.Windows.Forms.Button btLoad;
         private System.Windows.Forms.Button btSave;
         private System.Windows.Forms.Button btExecute;
-        private System.Windows.Forms.GroupBox groupBoxConditions;
-        private System.Windows.Forms.Panel panelQuery;
-        private Panel panelColumns;
-        private Splitter splitter4;
-        private GroupBox groupBoxSorting;
-        private SortColumnsPanel SCPanel;
-        private GroupBox groupBoxColumns;
-        private QueryColumnsPanel QCPanel;
-        private QueryPanel QPanel;
         private GroupBox groupBoxEntities;
         private EntitiesPanel EntPanel;
-        private Splitter splitter3;
+		private System.Windows.Forms.Panel panelQuery;
+        private System.Windows.Forms.GroupBox groupBoxColumns;
+        private Korzh.EasyQuery.WinForms.QueryColumnsPanel QCPanel;
+        private System.Windows.Forms.GroupBox groupBoxConditions;
+        private Korzh.EasyQuery.WinForms.QueryPanel QPanel;
+        private System.Windows.Forms.Panel panelColumns;
+        private System.Windows.Forms.GroupBox groupBoxSorting;
+        private Korzh.EasyQuery.WinForms.SortColumnsPanel SCPanel;
+        private System.Windows.Forms.Splitter splitter4;
 
         private DbModel dataModel1;
         private DbQuery query1;
@@ -62,8 +62,6 @@ namespace EqWinFormsDemo
         private readonly string _dataFolder = "App_Data";
         private readonly string _appDirectory;
 
-
-        private readonly string _connectionString = "Server=(localdb)\\MSSQLLocalDB;Database=EqDemoDb07;Trusted_Connection=True;";
         private SqlConnection _connection;
 
         public MainForm()
@@ -72,8 +70,14 @@ namespace EqWinFormsDemo
             _dataFolder = System.IO.Path.Combine(_appDirectory, "App_Data");
 
             InitializeComponent();
-            query1.Model = dataModel1;
-            QPanel.Query = this.query1;
+            dataModel1 = new DbModel();
+            query1 = new DbQuery(dataModel1);
+
+            QPanel.Query = query1;
+            QCPanel.Query = query1;
+            SCPanel.Query = query1;
+            EntPanel.Query = query1;
+
             EntPanel.ShowFilter = true;
             EntPanel.UpdateModelInfo();
             countryAttr = dataModel1.EntityRoot.FindAttribute(EntityAttrProp.Expression, "Customers.Country");
@@ -83,29 +87,40 @@ namespace EqWinFormsDemo
 
             this.QCPanel.AllowEditCaptions = true;
             this.QCPanel.AllowSorting = true;
+
+            //postpone DB initialization / opening a connection
+            var dbConnectTimer = new Timer();
+            dbConnectTimer.Tick += new EventHandler(TimerEventProcessor);
+            dbConnectTimer.Interval = 100;
+            dbConnectTimer.Start();
+        }
+
+        private void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
+        {
+            CheckConnection();
         }
 
         private void CheckConnection()
-        {         
-            CheckSqlConnection();
-        }
-
-
-        private void CheckSqlConnection()
         {
-            if (_connection == null)
-                _connection = new SqlConnection(_connectionString);
+            var prevTitle = this.Text;
+            this.Text += " (openning the connection to DB...)";
+            try {
+                if (_connection == null) {
+                    string currentDir = System.IO.Directory.GetCurrentDirectory();
+                    var connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"]?.ToString();
+                    _connection = new SqlConnection(connectionString);
 
-            if (_connection.State != ConnectionState.Open)
-            {
-                try {
+                    var initializer = new DbInitializer(_connection);
+                    initializer.EnsureCreated();
+                }
+                if (_connection.State != ConnectionState.Open) {
                     _connection.Open();
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
             }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+            this.Text = prevTitle;
         }
 
         private void btClear_Click(object sender, System.EventArgs e)
@@ -149,7 +164,6 @@ namespace EqWinFormsDemo
 
         private void btExecute_Click(object sender, System.EventArgs e)
         {
-
             try {
 
                 ResultDS.Reset();
