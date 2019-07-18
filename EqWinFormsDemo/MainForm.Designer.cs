@@ -44,6 +44,15 @@
             this.teSQL = new System.Windows.Forms.TextBox();
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.panelBG = new System.Windows.Forms.Panel();
+            this.panelQuery = new System.Windows.Forms.Panel();
+            this.groupBoxColumns = new System.Windows.Forms.GroupBox();
+            this.QCPanel = new Korzh.EasyQuery.WinForms.QueryColumnsPanel();
+            this.groupBoxConditions = new System.Windows.Forms.GroupBox();
+            this.QPanel = new Korzh.EasyQuery.WinForms.QueryPanel();
+            this.panelColumns = new System.Windows.Forms.Panel();
+            this.groupBoxSorting = new System.Windows.Forms.GroupBox();
+            this.SCPanel = new Korzh.EasyQuery.WinForms.SortColumnsPanel();
+            this.splitter4 = new System.Windows.Forms.Splitter();
             this.groupBoxEntities = new System.Windows.Forms.GroupBox();
             this.EntPanel = new Korzh.EasyQuery.WinForms.EntitiesPanel();
             this.panelButtons = new System.Windows.Forms.Panel();
@@ -53,15 +62,6 @@
             this.btExecute = new System.Windows.Forms.Button();
             this.toolTipExel = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipCsv = new System.Windows.Forms.ToolTip(this.components);
-            this.splitter4 = new System.Windows.Forms.Splitter();
-            this.panelQuery = new System.Windows.Forms.Panel();
-            this.groupBoxColumns = new System.Windows.Forms.GroupBox();
-            this.QCPanel = new Korzh.EasyQuery.WinForms.QueryColumnsPanel();
-            this.groupBoxConditions = new System.Windows.Forms.GroupBox();
-            this.QPanel = new Korzh.EasyQuery.WinForms.QueryPanel();
-            this.panelColumns = new System.Windows.Forms.Panel();
-            this.groupBoxSorting = new System.Windows.Forms.GroupBox();
-            this.SCPanel = new Korzh.EasyQuery.WinForms.SortColumnsPanel();
             ((System.ComponentModel.ISupportInitialize)(this.ResultDataTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ResultDS)).BeginInit();
             this.panelBottom.SuspendLayout();
@@ -70,13 +70,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid1)).BeginInit();
             this.groupBoxSQL.SuspendLayout();
             this.panelBG.SuspendLayout();
-            this.groupBoxEntities.SuspendLayout();
-            this.panelButtons.SuspendLayout();
             this.panelQuery.SuspendLayout();
             this.groupBoxColumns.SuspendLayout();
             this.groupBoxConditions.SuspendLayout();
             this.panelColumns.SuspendLayout();
             this.groupBoxSorting.SuspendLayout();
+            this.groupBoxEntities.SuspendLayout();
+            this.panelButtons.SuspendLayout();
             this.SuspendLayout();
             // 
             // ResultDataTable
@@ -214,89 +214,6 @@
             this.panelBG.Size = new System.Drawing.Size(920, 374);
             this.panelBG.TabIndex = 25;
             // 
-            // groupBoxEntities
-            // 
-            this.groupBoxEntities.Controls.Add(this.EntPanel);
-            this.groupBoxEntities.Dock = System.Windows.Forms.DockStyle.Left;
-            this.groupBoxEntities.Location = new System.Drawing.Point(0, 0);
-            this.groupBoxEntities.Name = "groupBoxEntities";
-            this.groupBoxEntities.Size = new System.Drawing.Size(179, 374);
-            this.groupBoxEntities.TabIndex = 29;
-            this.groupBoxEntities.TabStop = false;
-            this.groupBoxEntities.Text = "Objects and their attributes";
-            // 
-            // EntPanel
-            // 
-            this.EntPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.EntPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.EntPanel.ImageAddColumns = ((System.Drawing.Image)(resources.GetObject("EntPanel.ImageAddColumns")));
-            this.EntPanel.ImageAddConditions = ((System.Drawing.Image)(resources.GetObject("EntPanel.ImageAddConditions")));
-            this.EntPanel.ImageSelectAll = ((System.Drawing.Image)(resources.GetObject("EntPanel.ImageSelectAll")));
-            this.EntPanel.ImageSelectNone = ((System.Drawing.Image)(resources.GetObject("EntPanel.ImageSelectNone")));
-            this.EntPanel.Location = new System.Drawing.Point(3, 16);
-            this.EntPanel.Name = "EntPanel";
-            this.EntPanel.Query = null;
-            this.EntPanel.ShowFilter = true;
-            this.EntPanel.Size = new System.Drawing.Size(173, 355);
-            this.EntPanel.TabIndex = 29;
-            // 
-            // panelButtons
-            // 
-            this.panelButtons.Controls.Add(this.btClear);
-            this.panelButtons.Controls.Add(this.btLoad);
-            this.panelButtons.Controls.Add(this.btSave);
-            this.panelButtons.Controls.Add(this.btExecute);
-            this.panelButtons.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelButtons.Location = new System.Drawing.Point(842, 0);
-            this.panelButtons.Name = "panelButtons";
-            this.panelButtons.Size = new System.Drawing.Size(78, 374);
-            this.panelButtons.TabIndex = 22;
-            // 
-            // btClear
-            // 
-            this.btClear.Location = new System.Drawing.Point(8, 16);
-            this.btClear.Name = "btClear";
-            this.btClear.Size = new System.Drawing.Size(62, 24);
-            this.btClear.TabIndex = 12;
-            this.btClear.Text = "Clear";
-            this.btClear.Click += new System.EventHandler(this.btClear_Click);
-            // 
-            // btLoad
-            // 
-            this.btLoad.Location = new System.Drawing.Point(8, 56);
-            this.btLoad.Name = "btLoad";
-            this.btLoad.Size = new System.Drawing.Size(62, 24);
-            this.btLoad.TabIndex = 11;
-            this.btLoad.Text = "Load";
-            this.btLoad.Click += new System.EventHandler(this.btLoad_Click);
-            // 
-            // btSave
-            // 
-            this.btSave.Location = new System.Drawing.Point(8, 88);
-            this.btSave.Name = "btSave";
-            this.btSave.Size = new System.Drawing.Size(62, 24);
-            this.btSave.TabIndex = 10;
-            this.btSave.Text = "Save";
-            this.btSave.Click += new System.EventHandler(this.btSave_Click);
-            // 
-            // btExecute
-            // 
-            this.btExecute.Location = new System.Drawing.Point(8, 162);
-            this.btExecute.Name = "btExecute";
-            this.btExecute.Size = new System.Drawing.Size(62, 39);
-            this.btExecute.TabIndex = 9;
-            this.btExecute.Text = "Execute Query";
-            this.btExecute.Click += new System.EventHandler(this.btExecute_Click);
-            // 
-            // splitter4
-            // 
-            this.splitter4.BackColor = System.Drawing.SystemColors.Control;
-            this.splitter4.Location = new System.Drawing.Point(179, 0);
-            this.splitter4.Name = "splitter4";
-            this.splitter4.Size = new System.Drawing.Size(8, 374);
-            this.splitter4.TabIndex = 32;
-            this.splitter4.TabStop = false;
-            // 
             // panelQuery
             // 
             this.panelQuery.Controls.Add(this.groupBoxColumns);
@@ -383,6 +300,7 @@
             this.QPanel.Size = new System.Drawing.Size(639, 212);
             this.QPanel.TabIndex = 27;
             this.QPanel.TabStop = true;
+            this.QPanel.ListRequest += new Korzh.EasyQuery.WinForms.ListRequestEventHandler(this.QPanel_ListRequest);
             // 
             // panelColumns
             // 
@@ -431,6 +349,89 @@
             this.SCPanel.TabIndex = 28;
             this.SCPanel.TabStop = true;
             // 
+            // splitter4
+            // 
+            this.splitter4.BackColor = System.Drawing.SystemColors.Control;
+            this.splitter4.Location = new System.Drawing.Point(179, 0);
+            this.splitter4.Name = "splitter4";
+            this.splitter4.Size = new System.Drawing.Size(8, 374);
+            this.splitter4.TabIndex = 32;
+            this.splitter4.TabStop = false;
+            // 
+            // groupBoxEntities
+            // 
+            this.groupBoxEntities.Controls.Add(this.EntPanel);
+            this.groupBoxEntities.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupBoxEntities.Location = new System.Drawing.Point(0, 0);
+            this.groupBoxEntities.Name = "groupBoxEntities";
+            this.groupBoxEntities.Size = new System.Drawing.Size(179, 374);
+            this.groupBoxEntities.TabIndex = 29;
+            this.groupBoxEntities.TabStop = false;
+            this.groupBoxEntities.Text = "Objects and their attributes";
+            // 
+            // EntPanel
+            // 
+            this.EntPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.EntPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.EntPanel.ImageAddColumns = ((System.Drawing.Image)(resources.GetObject("EntPanel.ImageAddColumns")));
+            this.EntPanel.ImageAddConditions = ((System.Drawing.Image)(resources.GetObject("EntPanel.ImageAddConditions")));
+            this.EntPanel.ImageSelectAll = ((System.Drawing.Image)(resources.GetObject("EntPanel.ImageSelectAll")));
+            this.EntPanel.ImageSelectNone = ((System.Drawing.Image)(resources.GetObject("EntPanel.ImageSelectNone")));
+            this.EntPanel.Location = new System.Drawing.Point(3, 16);
+            this.EntPanel.Name = "EntPanel";
+            this.EntPanel.Query = null;
+            this.EntPanel.ShowFilter = true;
+            this.EntPanel.Size = new System.Drawing.Size(173, 355);
+            this.EntPanel.TabIndex = 29;
+            // 
+            // panelButtons
+            // 
+            this.panelButtons.Controls.Add(this.btClear);
+            this.panelButtons.Controls.Add(this.btLoad);
+            this.panelButtons.Controls.Add(this.btSave);
+            this.panelButtons.Controls.Add(this.btExecute);
+            this.panelButtons.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelButtons.Location = new System.Drawing.Point(842, 0);
+            this.panelButtons.Name = "panelButtons";
+            this.panelButtons.Size = new System.Drawing.Size(78, 374);
+            this.panelButtons.TabIndex = 22;
+            // 
+            // btClear
+            // 
+            this.btClear.Location = new System.Drawing.Point(8, 16);
+            this.btClear.Name = "btClear";
+            this.btClear.Size = new System.Drawing.Size(62, 24);
+            this.btClear.TabIndex = 12;
+            this.btClear.Text = "Clear";
+            this.btClear.Click += new System.EventHandler(this.btClear_Click);
+            // 
+            // btLoad
+            // 
+            this.btLoad.Location = new System.Drawing.Point(8, 56);
+            this.btLoad.Name = "btLoad";
+            this.btLoad.Size = new System.Drawing.Size(62, 24);
+            this.btLoad.TabIndex = 11;
+            this.btLoad.Text = "Load";
+            this.btLoad.Click += new System.EventHandler(this.btLoad_Click);
+            // 
+            // btSave
+            // 
+            this.btSave.Location = new System.Drawing.Point(8, 88);
+            this.btSave.Name = "btSave";
+            this.btSave.Size = new System.Drawing.Size(62, 24);
+            this.btSave.TabIndex = 10;
+            this.btSave.Text = "Save";
+            this.btSave.Click += new System.EventHandler(this.btSave_Click);
+            // 
+            // btExecute
+            // 
+            this.btExecute.Location = new System.Drawing.Point(8, 162);
+            this.btExecute.Name = "btExecute";
+            this.btExecute.Size = new System.Drawing.Size(62, 39);
+            this.btExecute.TabIndex = 9;
+            this.btExecute.Text = "Execute Query";
+            this.btExecute.Click += new System.EventHandler(this.btExecute_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -451,13 +452,13 @@
             this.groupBoxSQL.ResumeLayout(false);
             this.groupBoxSQL.PerformLayout();
             this.panelBG.ResumeLayout(false);
-            this.groupBoxEntities.ResumeLayout(false);
-            this.panelButtons.ResumeLayout(false);
             this.panelQuery.ResumeLayout(false);
             this.groupBoxColumns.ResumeLayout(false);
             this.groupBoxConditions.ResumeLayout(false);
             this.panelColumns.ResumeLayout(false);
             this.groupBoxSorting.ResumeLayout(false);
+            this.groupBoxEntities.ResumeLayout(false);
+            this.panelButtons.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

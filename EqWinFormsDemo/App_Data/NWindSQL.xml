@@ -31,28 +31,28 @@
     <Editor id="_DTE" type="EDIT" resType="String" defValue="" />
     <Editor id="_DPDE" type="DATETIME" resType="Unknown" subType="Date" />
     <Editor id="_DPTE" type="DATETIME" resType="Unknown" subType="Time" />
-    <Editor id="VE_Customer.Country" type="SQLLIST" resType="Unknown">
+    <Editor id="VE_Customer_Country" type="SQLLIST" resType="Unknown">
       <SQL><![CDATA[SELECT DISTINCT [Country], [Country] FROM [Customers] ORDER BY 1]]></SQL>
     </Editor>
-    <Editor id="VE_Employee.Country" type="SQLLIST" resType="Unknown">
+    <Editor id="VE_Employee_Country" type="SQLLIST" resType="Unknown">
       <SQL><![CDATA[SELECT DISTINCT [Country], [Country] FROM [Employees] ORDER BY 1]]></SQL>
     </Editor>
     <Editor id="VE_Employee.ManagerEmployeeID" type="SQLLIST" resType="Unknown">
       <SQL><![CDATA[SELECT DISTINCT [EmployeeID], [FirstName] FROM [Employees] ORDER BY 1]]></SQL>
     </Editor>
-    <Editor id="VE_Order.CustomerID" type="SQLLIST" resType="Unknown">
+    <Editor id="VE_Order_CustomerID" type="SQLLIST" resType="Unknown">
       <SQL><![CDATA[SELECT DISTINCT [CustomerID], [CompanyName] FROM [Customers] ORDER BY 1]]></SQL>
     </Editor>
-    <Editor id="VE_Order.EmployeeId" type="SQLLIST" resType="Unknown">
+    <Editor id="VE_Order_EmployeeId" type="SQLLIST" resType="Unknown">
       <SQL><![CDATA[SELECT DISTINCT [EmployeeID], [FirstName] FROM [Employees] ORDER BY 1]]></SQL>
     </Editor>
-    <Editor id="VE_Order.ProductID" type="SQLLIST" resType="Unknown">
+    <Editor id="VE_Order_ProductID" type="SQLLIST" resType="Unknown">
       <SQL><![CDATA[SELECT DISTINCT [ProductID], [ProductName] FROM [Products] ORDER BY 1]]></SQL>
     </Editor>
-    <Editor id="VE_OrderDetail.OrderID" type="SQLLIST" resType="Unknown">
+    <Editor id="VE_OrderDetail_OrderID" type="SQLLIST" resType="Unknown">
       <SQL><![CDATA[SELECT DISTINCT [OrderID], [ShipName] FROM [Orders] ORDER BY 1]]></SQL>
     </Editor>
-    <Editor id="VE_OrderDetail.ProductID" type="SQLLIST" resType="Unknown">
+    <Editor id="VE_OrderDetail_ProductID" type="SQLLIST" resType="Unknown">
       <SQL><![CDATA[SELECT DISTINCT [ProductID], [ProductName] FROM [Products] ORDER BY 1]]></SQL>
     </Editor>
   </Editors>
@@ -230,7 +230,7 @@
         <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,InSubQuery,NotInSubQuery,IsNull,IsNotNull</Operators>
         <Description />
       </Attr>
-      <Attr id="Customer.Country" kind="Data" expr="Country" caption="Country" type="String" size="0" UIC="True" UIR="True" UIS="True" customFunc="" editor="VE_Customer.Country" quote="False" UAL="True" aggr="False" tables="Customers">
+      <Attr id="Customer.Country" kind="Data" expr="Country" caption="Country" type="String" size="0" UIC="True" UIR="True" UIS="True" customFunc="" editor="VE_Customer_Country" quote="False" UAL="True" aggr="False" tables="Customers">
         <Operators>Equal,InList,NotEqual,NotInList,IsNull</Operators>
         <Description />
       </Attr>
@@ -268,7 +268,7 @@
         <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,InSubQuery,NotInSubQuery,IsNull,IsNotNull</Operators>
         <Description />
       </Attr>
-      <Attr id="Employee.Country" kind="Data" expr="Country" caption="Country" type="String" size="0" UIC="True" UIR="True" UIS="True" customFunc="" editor="VE_Employee.Country" quote="False" UAL="True" aggr="False" tables="Employees">
+      <Attr id="Employee.Country" kind="Data" expr="Country" caption="Country" type="String" size="0" UIC="True" UIR="True" UIS="True" customFunc="" editor="VE_Employee_Country" quote="False" UAL="True" aggr="False" tables="Employees">
         <Operators>Equal,InList,NotEqual,NotInList,IsNull</Operators>
         <Description />
       </Attr>
@@ -330,11 +330,11 @@
         <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,InSubQuery,NotInSubQuery</Operators>
         <Description />
       </Attr>
-      <Attr id="Order.CustomerID" kind="Data" expr="CustomerID" caption="Customer" type="String" size="0" UIC="True" UIR="False" UIS="True" customFunc="" editor="VE_Order.CustomerID" quote="False" UAL="True" aggr="False" tables="Orders">
+      <Attr id="Order.CustomerID" kind="Data" expr="CustomerID" caption="Customer" type="String" size="0" UIC="True" UIR="False" UIS="True" customFunc="" editor="VE_Order_CustomerID" quote="False" UAL="True" aggr="False" tables="Orders">
         <Operators>Equal,NotEqual,InList,NotInList,IsNull,IsNotNull</Operators>
         <Description />
       </Attr>
-      <Attr id="Order.EmployeeID" kind="Data" expr="EmployeeID" caption="Employee" type="Int32" size="0" UIC="True" UIR="False" UIS="True" customFunc="" editor="VE_Order.EmployeeId" quote="False" UAL="True" aggr="False" tables="Orders">
+      <Attr id="Order.EmployeeID" kind="Data" expr="EmployeeID" caption="Employee" type="Int32" size="0" UIC="True" UIR="False" UIS="True" customFunc="" editor="VE_Order_EmployeeId" quote="False" UAL="True" aggr="False" tables="Orders">
         <Operators>Equal,NotEqual,InList,NotInList</Operators>
         <Description />
       </Attr>
@@ -384,11 +384,11 @@
       </Attr>
     </Entity>
     <Entity id="OrderDetail" name="Order detail" UIC="True" UIR="True" UIS="True">
-      <Attr id="OrderDetail.OrderID" kind="Data" expr="OrderID" caption="Order" type="Int32" size="0" UIC="True" UIR="False" UIS="True" customFunc="" editor="VE_OrderDetail.OrderID" quote="False" UAL="True" aggr="False" tables="OrderDetails">
+      <Attr id="OrderDetail.OrderID" kind="Data" expr="OrderID" caption="Order" type="Int32" size="0" UIC="True" UIR="False" UIS="True" customFunc="" editor="VE_OrderDetail_OrderID" quote="False" UAL="True" aggr="False" tables="OrderDetails">
         <Operators>Equal,NotEqual,InList,NotInList</Operators>
         <Description />
       </Attr>
-      <Attr id="OrderDetail.ProductID" kind="Data" expr="ProductID" caption="Product" type="Int32" size="0" UIC="True" UIR="False" UIS="True" customFunc="" editor="VE_OrderDetail.ProductID" quote="False" UAL="True" aggr="False" tables="OrderDetails">
+      <Attr id="OrderDetail.ProductID" kind="Data" expr="ProductID" caption="Product" type="Int32" size="0" UIC="True" UIR="False" UIS="True" customFunc="" editor="VE_OrderDetail_ProductID" quote="False" UAL="True" aggr="False" tables="OrderDetails">
         <Operators>Equal,NotEqual,InList,NotInList</Operators>
         <Description />
       </Attr>

@@ -311,9 +311,8 @@ namespace EqWinFormsDemo
 
         private void InitDataModel()
         {
-
-            //dataModel1.LoadFromXmlFile(System.IO.Path.Combine(_dataFolder, "NwindSQL.xml"));
-            dataModel1.LoadFromJsonFile(System.IO.Path.Combine(_dataFolder, "NwindSQL.json"));
+            //dataModel1.LoadFromXmlFile(System.IO.Path.Combine(_dataFolder, "NWindSQL.xml"));
+            dataModel1.LoadFromJsonFile(System.IO.Path.Combine(_dataFolder, "NWindSQL.json"));
                 
             QPanel.UpdateModelInfo();
             QCPanel.UpdateModelInfo();
