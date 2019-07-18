@@ -36,11 +36,9 @@ namespace EqWpfDemo {
                         
             DataContext = this;
             DbModel dataModel = new DbModel();
-            //_modelFileName = System.IO.Path.Combine(directory, "App_Data\\NWindSQL.xml");
-            _modelFileName = System.IO.Path.Combine(directory, "App_Data\\NWindSQL.json");
+            _modelFileName = System.IO.Path.Combine(directory, "App_Data\\NWindSQL.xml");
             try {
-                //dataModel.LoadFromXmlFile(_modelFileName);
-                dataModel.LoadFromJsonFile(_modelFileName);
+                dataModel.LoadFromXmlFile(_modelFileName);
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
