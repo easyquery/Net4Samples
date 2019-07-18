@@ -103,7 +103,7 @@ namespace EqWinFormsDemo
         private void CheckConnection()
         {
             var prevTitle = this.Text;
-            this.Text += " (openning the connection to DB...)";
+            this.Text += " (opening DB connection...)";
             try {
                 if (_connection == null) {
                     string currentDir = System.IO.Directory.GetCurrentDirectory();
