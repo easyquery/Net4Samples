@@ -4,17 +4,17 @@
   "desc": null,
   "cols": [
     {
-      "cptn": "Customers Country",
+      "cptn": "Client Country",
       "srt": 0,
       "expr": {
         "tag": 2,
         "dtype": 1,
         "kind": 2,
-        "id": "Customers.Country"
+        "id": "Customer.Country"
       }
     },
     {
-      "cptn": "Orders Freight Sum",
+      "cptn": "Order detail Unit price",
       "srt": 0,
       "expr": {
         "tag": 4,
@@ -24,10 +24,10 @@
         "distinct": false,
         "args": [
           {
-            "tag": 2,
-            "dtype": 8,
-            "kind": 2,
-            "id": "Orders.Freight"
+	        "tag": 2,
+	        "dtype": 8,
+	        "kind": 2,
+	        "id": "OrderDetail.UnitPrice"
           }
         ]
       }
@@ -45,7 +45,7 @@
             "tag": 2,
             "dtype": 12,
             "kind": 2,
-            "id": "Orders.OrderDate"
+            "id": "Order.OrderDate"
           }
         ]
       }
