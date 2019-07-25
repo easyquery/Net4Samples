@@ -40,7 +40,7 @@
     "conds": [
       {
         "tag": 1,
-        "op": "DateWithinPrevYear",
+        "op": "DateWithinThisYear",
         "exprs": [
           {
             "tag": 2,
