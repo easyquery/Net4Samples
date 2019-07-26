@@ -88,9 +88,11 @@ namespace EqWpfDemo {
             builder.Formats.DateFormat = "MM/dd/yyyy";
             builder.Formats.DateTimeFormat = "MM/dd/yyyy HH:mm";
 
-            if (!builder.CanBuild) return;
-            builder.BuildSQL();
-            string sql = builder.Result.SQL;
+            string sql = "";
+            if (builder.CanBuild) {
+                builder.BuildSQL();
+                sql = builder.Result.SQL;
+            }
             textBoxSql.Text = sql;
             buttonExecute.IsEnabled = !string.IsNullOrEmpty(sql);
         }

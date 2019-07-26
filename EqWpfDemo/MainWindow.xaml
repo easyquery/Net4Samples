@@ -1745,7 +1745,7 @@
             <Border Grid.Row="1" BorderThickness="0,0,0,1" BorderBrush="#FF1777B1" Margin="0,0,0,4" Grid.ColumnSpan="2">
                 <TextBlock x:Name="ResultColumns" FontWeight="Bold" Text="Result Columns" FontSize="24" Foreground="#FF4F4F4F" FontFamily="Segoe UI Light" Margin="15,0,0,0" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left"/>
             </Border>            
-            <eqcontols:QueryColumnsPanel Query="{Binding Path=Query}" Name="queryColumnsPanel" Margin="15,0,15,15" Style="{StaticResource QueryColumnsPanelStyle}" Grid.RowSpan="2" Grid.Row="2" Grid.ColumnSpan="2" />
+            <eqcontols:QueryColumnsPanel Query="{Binding Path=Query}" Name="queryColumnsPanel" Margin="15,0,15,15" Style="{StaticResource QueryColumnsPanelStyle}" Grid.RowSpan="2" Grid.Row="2" Grid.ColumnSpan="2" ShowCheckBoxes="True" />
         </Grid>
 
         <Grid Margin="5" Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="2">
