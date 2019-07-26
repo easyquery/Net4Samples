@@ -135,8 +135,8 @@
     <PackageReference Include="Korzh.EasyQuery.DataExport" Version="5.2.0-rc2" />
     <PackageReference Include="Korzh.EasyQuery.AspNet4" Version="5.2.0-rc2" />
     <PackageReference Include="Korzh.EasyQuery.EntityFramework6" Version="5.2.0-rc2" />
-	<PackageReference Include="Korzh.DbUtils.Import" Version="1.1.1" />
-    <PackageReference Include="Korzh.DbUtils.SqlServer" Version="1.1.1" />
+	<PackageReference Include="Korzh.DbUtils.Import" Version="1.1.2" />
+    <PackageReference Include="Korzh.DbUtils.SqlServer" Version="1.1.2" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
