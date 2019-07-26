@@ -25,7 +25,7 @@ namespace EqAspNet4Demo.Migrations
 
             Korzh.DbUtils.DbInitializer.Create(options => {
                 options.UseSqlServer(context.Database.Connection.ConnectionString);
-                options.UseZipPacker(Path.Combine(System.Web.Hosting.HostingEnvironment.MapPath("~/App_Data"), "EqDemoData.zip"));
+                options.UseZipPacker(System.Web.Hosting.HostingEnvironment.MapPath("~/App_Data/EqDemoData.zip"));
             })
             .Seed();
         }
