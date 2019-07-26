@@ -3,7 +3,10 @@ namespace EqAspNet4Demo.Migrations
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
+    using System.IO;
     using System.Linq;
+
+    using Korzh.DbUtils;
 
     internal sealed class Configuration : DbMigrationsConfiguration<EqAspNet4Demo.Models.ApplicationDbContext>
     {
@@ -20,8 +23,11 @@ namespace EqAspNet4Demo.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
 
-            var initializer = new DbIntializer(context.Database.Connection.ConnectionString);
-            initializer.AddTestData();
+            Korzh.DbUtils.DbInitializer.Create(options => {
+                options.UseSqlServer(context.Database.Connection.ConnectionString);
+                options.UseZipPacker(Path.Combine(System.Web.Hosting.HostingEnvironment.MapPath("~/App_Data"), "EqDemoData.zip"));
+            })
+            .Seed();
         }
     }
 }

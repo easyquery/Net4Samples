@@ -135,6 +135,8 @@
     <PackageReference Include="Korzh.EasyQuery.DataExport" Version="5.2.0-rc2" />
     <PackageReference Include="Korzh.EasyQuery.AspNet4" Version="5.2.0-rc2" />
     <PackageReference Include="Korzh.EasyQuery.EntityFramework6" Version="5.2.0-rc2" />
+	<PackageReference Include="Korzh.DbUtils.Import" Version="1.1.1" />
+    <PackageReference Include="Korzh.DbUtils.SqlServer" Version="1.1.1" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -152,7 +154,6 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Data\ApplicationDbContext.cs" />
-    <Compile Include="Data\DbInitalizer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -181,7 +182,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\EqDemoDb.sql" />
     <Content Include="App_Data\NWindSQL.xml" />
     <Content Include="Content\adhoc-reporting.css" />
     <Content Include="Content\root.css" />
@@ -252,6 +252,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Customer\Customers.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\EqDemoData.zip">
+      <BrowseToURL>~/App_Data/EqDemoData.zip</BrowseToURL>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
