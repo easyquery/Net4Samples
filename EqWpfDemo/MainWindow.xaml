@@ -1212,10 +1212,10 @@
                 </Setter.Value>
             </Setter>
         </Style>        
-        <Style x:Key="QueryColumnsPanelStyle" TargetType="eqcontols:QueryColumnsPanel">
+        <Style x:Key="ColumnsPanelStyle" TargetType="eqcontols:ColumnsPanel">
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="eqcontols:QueryColumnsPanel">
+                    <ControlTemplate TargetType="eqcontols:ColumnsPanel">
                         <Grid x:Name="PART_Grid" AllowDrop="True">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
@@ -1468,10 +1468,10 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style x:Key="SortColumnsPanel" TargetType="eqcontols:SortColumnsPanel">
+        <Style x:Key="SortColumnsPanel" TargetType="eqcontols:SortingPanel">
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="eqcontols:SortColumnsPanel">
+                    <ControlTemplate TargetType="eqcontols:SortingPanel">
                         <Grid x:Name="PART_Grid" AllowDrop="True">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
@@ -1745,7 +1745,7 @@
             <Border Grid.Row="1" BorderThickness="0,0,0,1" BorderBrush="#FF1777B1" Margin="0,0,0,4" Grid.ColumnSpan="2">
                 <TextBlock x:Name="ResultColumns" FontWeight="Bold" Text="Result Columns" FontSize="24" Foreground="#FF4F4F4F" FontFamily="Segoe UI Light" Margin="15,0,0,0" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left"/>
             </Border>            
-            <eqcontols:QueryColumnsPanel Query="{Binding Path=Query}" Name="queryColumnsPanel" Margin="15,0,15,15" Style="{StaticResource QueryColumnsPanelStyle}" Grid.RowSpan="2" Grid.Row="2" Grid.ColumnSpan="2" />
+            <eqcontols:ColumnsPanel Query="{Binding Path=Query}" Name="columnsPanel" Margin="15,0,15,15" Style="{StaticResource ColumnsPanelStyle}" Grid.RowSpan="2" Grid.Row="2" Grid.ColumnSpan="2" />
         </Grid>
 
         <Grid Margin="5" Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="2">
@@ -1764,7 +1764,7 @@
                 <TextBlock x:Name="ColumnsSorting" FontWeight="Bold" Text="Columns Sorting" FontSize="24" FontFamily="Segoe UI Light" Foreground="#FF4F4F4F" Margin="15,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1"/>
             </Border>
 
-            <eqcontols:SortColumnsPanel Query="{Binding Query}" x:Name="sortColumnsPanel" Margin="15,0,15,15" Style="{StaticResource SortColumnsPanel}" Grid.RowSpan="2" Grid.Row="2" Grid.ColumnSpan="2"/>
+            <eqcontols:SortingPanel Query="{Binding Query}" x:Name="sortingPanel" Margin="15,0,15,15" Style="{StaticResource SortColumnsPanel}" Grid.RowSpan="2" Grid.Row="2" Grid.ColumnSpan="2"/>
         </Grid>
         <Grid Margin="5" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="5">
             <Grid.ColumnDefinitions>

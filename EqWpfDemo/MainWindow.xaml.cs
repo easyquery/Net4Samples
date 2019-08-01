@@ -20,57 +20,69 @@ namespace EqWpfDemo {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window{            
-        private readonly string _modelFileName;
-        private readonly SqlConnection _connection;
+    public partial class MainWindow : Window
+    {            
+        private string _modelFileName;
+        private SqlConnection _connection;
 
-        public MainWindow() {
-            string directory = System.IO.Directory.GetCurrentDirectory();
+        public MainWindow()
+        {
+            InitDatabase();
+
+            InitializeComponent();
+            DataContext = this;
+
+            InitEasyQuery();
+        }
+
+        private void InitDatabase()
+        {
             var connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"]?.ToString();
             _connection = new SqlConnection(connectionString);
 
             var initializer = new DbInitializer(_connection);
             initializer.EnsureCreated();
+        }
 
-            InitializeComponent();
-                        
-            DataContext = this;
-            DbModel dataModel = new DbModel();
-            _modelFileName = System.IO.Path.Combine(directory, "App_Data\\NWindSQL.xml");
-            try {
+        public DbQuery Query { get; private set; }
+
+
+        private void InitEasyQuery()
+        {
+            var workDir = System.IO.Directory.GetCurrentDirectory();
+            var dataModel = new DbModel();
+
+            _modelFileName = System.IO.Path.Combine(workDir, "App_Data\\NWindSQL.xml");
+            try
+            {
                 dataModel.LoadFromXmlFile(_modelFileName);
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message);
             }
 
-            query = new DbQuery(dataModel);      
+            //query initialization
+            Query = new DbQuery(dataModel);
+            Query.ConditionsChanged += query_ConditionsChanged;
+            Query.ColumnsChanged += query_ColumnsChanged;
 
+            //add handlers for ListRequest and ValueRequest events
             AddHandler(ListXElement.ListRequestEvent, new ListXElement.ListRequestEventHandler(queryPanel_ListRequest));
-
             AddHandler(SimpleConditionRow.ValueRequestEvent, new ValueRequestEventHandler(queryPanel_CustomValueRequest));
 
+            //some additional configuration of EasyQuery visual controls
             queryPanel.SortEntities = XSortOrder.Ascending;
 
-            queryColumnsPanel.SortEntities = XSortOrder.Ascending;
-            sortColumnsPanel.SortEntities = XSortOrder.Ascending;
+            columnsPanel.SortEntities = XSortOrder.Ascending;
+            columnsPanel.ShowCheckBoxes = true;
+            sortingPanel.SortEntities = XSortOrder.Ascending;
             entitiesPanel.SortEntities = XSortOrder.Ascending;
-            query.ConditionsChanged += query_ConditionsChanged;
-            query.ColumnsChanged += query_ColumnsChanged;
-            PanelExport.Visibility = Visibility.Collapsed;
 
-            entitiesPanel.SortEntities = XSortOrder.Ascending;
+            PanelExport.Visibility = Visibility.Collapsed;
 
             textBoxEntityFilter.TextChanged += TextBoxEntityFilter_TextChanged;
             entitiesPanel.ItemAdding += EntitiesPanel_ItemAdding;
-        }
-
-        private void TextBoxEntityFilter_TextChanged(object sender, TextChangedEventArgs e) {
-            entitiesPanel.FilterByText(textBoxEntityFilter.Text);
-        }
-
-        private void EntitiesPanel_ItemAdding(object sender, ItemAddingEventArgs e) {
-            //set e.Accept to true only for those item which you want to leave in the tree
         }
 
         void query_ColumnsChanged(object sender, ColumnsChangeEventArgs e) {
@@ -81,6 +93,16 @@ namespace EqWpfDemo {
             SetSql();
         }
 
+        private void TextBoxEntityFilter_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            entitiesPanel.FilterByText(textBoxEntityFilter.Text);
+        }
+
+        private void EntitiesPanel_ItemAdding(object sender, ItemAddingEventArgs e)
+        {
+            //set e.Accept to true only for those item which you want to leave in the tree
+        }
+
         void SetSql() {
             SqlQueryBuilder builder = new SqlQueryBuilder((DbQuery)queryPanel.Query);
             builder.Formats.SetDefaultFormats(FormatType.MsSqlServer);
@@ -88,21 +110,12 @@ namespace EqWpfDemo {
             builder.Formats.DateFormat = "MM/dd/yyyy";
             builder.Formats.DateTimeFormat = "MM/dd/yyyy HH:mm";
 
-            string sql = "";
-            if (builder.CanBuild) {
-                builder.BuildSQL();
-                sql = builder.Result.SQL;
-            }
+            if (!builder.CanBuild) return;
+            builder.BuildSQL();
+            string sql = builder.Result.SQL;
             textBoxSql.Text = sql;
             buttonExecute.IsEnabled = !string.IsNullOrEmpty(sql);
         }
-
-        private DbQuery query;
-        public Query Query {
-            get {                
-                return query;
-            }
-        } 
 
         private Stream LoadEmbededResource(string resourceFileName) {
             System.Reflection.Assembly a = System.Reflection.Assembly.GetExecutingAssembly();
@@ -122,7 +135,6 @@ namespace EqWpfDemo {
             if (_connection.State != System.Data.ConnectionState.Open)
                 _connection.Open();
         }
-
 
         private void Execute_Click(object sender, RoutedEventArgs e) {            
             try {
@@ -151,7 +163,6 @@ namespace EqWpfDemo {
             buttonExecute.IsEnabled = !string.IsNullOrEmpty(textBoxSql.Text);
         }
 
-
         private void Clear_Click(object sender, RoutedEventArgs e) {
             Clear();
             PanelExport.Visibility = Visibility.Collapsed;
@@ -178,8 +189,6 @@ namespace EqWpfDemo {
             }
         }
 
-
-
         private void GetSqlList(string sql, ValueItemList items) {
             CheckConnection();
             var resultDA = new SqlDataAdapter(sql, _connection);
@@ -194,8 +203,7 @@ namespace EqWpfDemo {
             }
             catch (Exception) {
                 items.Clear();
-            }
-            
+            }            
         }
 
         /// <summary>
