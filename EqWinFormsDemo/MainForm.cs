@@ -20,7 +20,6 @@ namespace EqWinFormsDemo
 {
     public partial class MainForm : Form
     {
-
         private System.Windows.Forms.OpenFileDialog openFileDlg;
         private System.Windows.Forms.SaveFileDialog saveFileDlg;
         private System.Data.DataSet ResultDS;
@@ -39,19 +38,17 @@ namespace EqWinFormsDemo
         private System.Windows.Forms.Button btSave;
         private System.Windows.Forms.Button btExecute;
         private GroupBox groupBoxEntities;
-        private EntitiesPanel EntPanel;
 		private System.Windows.Forms.Panel panelQuery;
         private System.Windows.Forms.GroupBox groupBoxColumns;
-        private Korzh.EasyQuery.WinForms.QueryColumnsPanel QCPanel;
         private System.Windows.Forms.GroupBox groupBoxConditions;
-        private Korzh.EasyQuery.WinForms.QueryPanel QPanel;
         private System.Windows.Forms.Panel panelColumns;
         private System.Windows.Forms.GroupBox groupBoxSorting;
-        private Korzh.EasyQuery.WinForms.SortColumnsPanel SCPanel;
         private System.Windows.Forms.Splitter splitter4;
+        private Korzh.EasyQuery.WinForms.EntitiesPanel EntPanel;
+        private Korzh.EasyQuery.WinForms.QueryPanel QPanel;
+        private Korzh.EasyQuery.WinForms.ColumnsPanel CPanel;
+        private Korzh.EasyQuery.WinForms.SortingPanel SPanel;
 
-        private DbModel dataModel1;
-        private DbQuery query1;
 
         private ToolTip toolTipExel;
         private ToolTip toolTipCsv;
@@ -64,35 +61,53 @@ namespace EqWinFormsDemo
 
         private SqlConnection _connection;
 
+        private DbModel _dataModel;
+        private DbQuery _query;
+
+        private EntityAttr _countryAttr = null;
+
+
         public MainForm()
         {
             _appDirectory = System.IO.Directory.GetCurrentDirectory();
             _dataFolder = System.IO.Path.Combine(_appDirectory, "App_Data");
 
             InitializeComponent();
-            dataModel1 = new DbModel();
-            query1 = new DbQuery(dataModel1);
 
-            QPanel.Query = query1;
-            QCPanel.Query = query1;
-            SCPanel.Query = query1;
-            EntPanel.Query = query1;
+            InitEasyQuery();
 
-            EntPanel.ShowFilter = true;
-            EntPanel.UpdateModelInfo();
-            countryAttr = dataModel1.EntityRoot.FindAttribute(EntityAttrProp.Expression, "Customers.Country");
-            PanelExportShow(false);
-
-            InitDataModel();
-
-            this.QCPanel.AllowEditCaptions = true;
-            this.QCPanel.AllowSorting = true;
+            HideExportPanel();
 
             //postpone DB initialization / opening a connection
             var dbConnectTimer = new Timer();
             dbConnectTimer.Tick += new EventHandler(TimerEventProcessor);
             dbConnectTimer.Interval = 100;
             dbConnectTimer.Start();
+        }
+
+        private void InitEasyQuery()
+        {
+            //intialize the data model and load it from XML (or JSON) file
+            _dataModel = new DbModel();
+            _dataModel.LoadFromXmlFile(System.IO.Path.Combine(_dataFolder, "NWindSQL.xml"));
+
+            //uncomment the next line if your prefer to store the model in JSON
+            //_dataModel.LoadFromJsonFile(System.IO.Path.Combine(_dataFolder, "NWindSQL.json"));
+
+            //saving the reference to Customer Country attribute in our model (will be used on RequestList processing)
+            _countryAttr = _dataModel.EntityRoot.FindAttribute(EntityAttrProp.Expression, "Customers.Country");
+
+            //initialize the query and assign it to all visual controls.
+            _query = new DbQuery(_dataModel);
+            QPanel.Query = _query;
+            CPanel.Query = _query;
+            SPanel.Query = _query;
+            EntPanel.Query = _query;
+
+            //setting differnt properties of EasyQuery visual controls
+            this.CPanel.AllowEditCaptions = true;
+            this.CPanel.AllowSorting = true;
+            this.EntPanel.ShowFilter = true;
         }
 
         private void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
@@ -103,7 +118,7 @@ namespace EqWinFormsDemo
         private void CheckConnection()
         {
             var prevTitle = this.Text;
-            this.Text += " (opening DB connection...)";
+            this.Text += " (openning the connection to DB...)";
             try {
                 if (_connection == null) {
                     string currentDir = System.IO.Directory.GetCurrentDirectory();
@@ -129,7 +144,7 @@ namespace EqWinFormsDemo
             EntPanel.ClearFilter();
             teSQL.Clear();
             dataGrid1.DataSource = null;
-            PanelExportShow(false);
+            HideExportPanel();
         }
 
         private void btLoad_Click(object sender, System.EventArgs e)
@@ -184,8 +199,7 @@ namespace EqWinFormsDemo
                 dataGrid1.DataSource = ResultDS.Tables[0].DefaultView;
 
                 _connection.Close();
-                // panelExport.Visible = true;
-                PanelExportShow(true);
+                ShowExportPanel();
             }
             catch (Exception error)
             {
@@ -199,7 +213,7 @@ namespace EqWinFormsDemo
         {
             teSQL.Clear();
             try {
-                SqlQueryBuilder builder = new SqlQueryBuilder(query1);
+                SqlQueryBuilder builder = new SqlQueryBuilder(_query);
                 builder.Formats.SetDefaultFormats(FormatType.MsSqlServer);
 
                 if (builder.CanBuild) {
@@ -219,8 +233,6 @@ namespace EqWinFormsDemo
 
             return null;
         }
-
-        private EntityAttr countryAttr = null;
 
         private void QPanel_ListRequest(object sender, ListRequestEventArgs e)
         {
@@ -244,7 +256,7 @@ namespace EqWinFormsDemo
             }
             else if (e.ListName == "RegionList") {
                 e.ListItems.Clear();
-                string country = query1.GetOneValueForAttr(countryAttr);
+                string country = _query.GetOneValueForAttr(_countryAttr);
 
                 if (country == "Canada" || country == null) {
                     e.ListItems.Add("British Columbia", "BC");
@@ -273,7 +285,7 @@ namespace EqWinFormsDemo
             if (e.Condition != null)
                 baseAttr = e.Condition.BaseAttr;
 
-            if (baseAttr != null && baseAttr == countryAttr) {
+            if (baseAttr != null && baseAttr == _countryAttr) {
                 QPanel.RefreshList("RegionList");
             }
 
@@ -283,11 +295,11 @@ namespace EqWinFormsDemo
 
         private void ResetDataModel()
         {
-            query1.Clear();
-            dataModel1.LoadFromXmlFile(System.IO.Path.Combine(_dataFolder, "NWindMDB.xml"));
+            _query.Clear();
+            _dataModel.LoadFromXmlFile(System.IO.Path.Combine(_dataFolder, "NWindMDB.xml"));
            
             QPanel.UpdateModelInfo();
-            QCPanel.UpdateModelInfo();
+            CPanel.UpdateModelInfo();
             EntPanel.UpdateModelInfo();
         }
 
@@ -307,16 +319,6 @@ namespace EqWinFormsDemo
         {
             if (_connection != null)
                 _connection.Close();
-        }
-
-        private void InitDataModel()
-        {
-            //dataModel1.LoadFromXmlFile(System.IO.Path.Combine(_dataFolder, "NWindSQL.xml"));
-            dataModel1.LoadFromJsonFile(System.IO.Path.Combine(_dataFolder, "NWindSQL.json"));
-                
-            QPanel.UpdateModelInfo();
-            QCPanel.UpdateModelInfo();
-            EntPanel.UpdateModelInfo();
         }
 
         private void btnExportCsv_Click(object sender, EventArgs e)
@@ -369,16 +371,16 @@ namespace EqWinFormsDemo
             }
         }
 
-        private void PanelExportShow(bool activ)
+        private void ShowExportPanel()
         {
-            if (activ) {
-                this.panelExport.Show();
-                this.groupBoxResultSet.Width = this.groupBoxResultSet.Parent.ClientSize.Width - this.panelExport.Width - this.groupBoxResultSet.Left - 4;
-            }
-            else {
-                this.panelExport.Hide();
-                this.groupBoxResultSet.Width = this.groupBoxResultSet.Parent.ClientSize.Width - this.groupBoxResultSet.Left - 4;
-            }
+            this.panelExport.Show();
+            this.groupBoxResultSet.Width = this.groupBoxResultSet.Parent.ClientSize.Width - this.panelExport.Width - this.groupBoxResultSet.Left - 4;
+        }
+
+        private void HideExportPanel()
+        {
+            this.panelExport.Hide();
+            this.groupBoxResultSet.Width = this.groupBoxResultSet.Parent.ClientSize.Width - this.groupBoxResultSet.Left - 4;
         }
     }
 }

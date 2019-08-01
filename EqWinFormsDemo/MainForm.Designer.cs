@@ -46,15 +46,11 @@
             this.panelBG = new System.Windows.Forms.Panel();
             this.panelQuery = new System.Windows.Forms.Panel();
             this.groupBoxColumns = new System.Windows.Forms.GroupBox();
-            this.QCPanel = new Korzh.EasyQuery.WinForms.QueryColumnsPanel();
             this.groupBoxConditions = new System.Windows.Forms.GroupBox();
-            this.QPanel = new Korzh.EasyQuery.WinForms.QueryPanel();
             this.panelColumns = new System.Windows.Forms.Panel();
             this.groupBoxSorting = new System.Windows.Forms.GroupBox();
-            this.SCPanel = new Korzh.EasyQuery.WinForms.SortColumnsPanel();
             this.splitter4 = new System.Windows.Forms.Splitter();
             this.groupBoxEntities = new System.Windows.Forms.GroupBox();
-            this.EntPanel = new Korzh.EasyQuery.WinForms.EntitiesPanel();
             this.panelButtons = new System.Windows.Forms.Panel();
             this.btClear = new System.Windows.Forms.Button();
             this.btLoad = new System.Windows.Forms.Button();
@@ -62,6 +58,10 @@
             this.btExecute = new System.Windows.Forms.Button();
             this.toolTipExel = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipCsv = new System.Windows.Forms.ToolTip(this.components);
+            this.CPanel = new Korzh.EasyQuery.WinForms.ColumnsPanel();
+            this.SPanel = new Korzh.EasyQuery.WinForms.SortingPanel();
+            this.QPanel = new Korzh.EasyQuery.WinForms.QueryPanel();
+            this.EntPanel = new Korzh.EasyQuery.WinForms.EntitiesPanel();
             ((System.ComponentModel.ISupportInitialize)(this.ResultDataTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ResultDS)).BeginInit();
             this.panelBottom.SuspendLayout();
@@ -89,6 +89,146 @@
             this.ResultDS.Locale = new System.Globalization.CultureInfo("en");
             this.ResultDS.Tables.AddRange(new System.Data.DataTable[] {
             this.ResultDataTable});
+            // 
+            // groupBoxConditions
+            // 
+            this.groupBoxConditions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxConditions.Controls.Add(this.QPanel);
+            this.groupBoxConditions.Location = new System.Drawing.Point(0, 145);
+            this.groupBoxConditions.Name = "groupBoxConditions";
+            this.groupBoxConditions.Size = new System.Drawing.Size(652, 229);
+            this.groupBoxConditions.TabIndex = 2;
+            this.groupBoxConditions.TabStop = false;
+            this.groupBoxConditions.Text = "Query Conditions";
+            // 
+            // QPanel
+            // 
+            this.QPanel.Active = false;
+            this.QPanel.ActiveRowIndex = -1;
+            this.QPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.QPanel.Appearance.ActiveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(225)))), ((int)(((byte)(190)))));
+            this.QPanel.Appearance.ActiveForeColor = System.Drawing.SystemColors.HighlightText;
+            this.QPanel.Appearance.AdditionRowColor = System.Drawing.Color.DarkGreen;
+            this.QPanel.Appearance.ButtonForeColor = System.Drawing.SystemColors.ControlText;
+            this.QPanel.Appearance.DefaultListControlType = "LISTBOX";
+            this.QPanel.Appearance.ExprColor = System.Drawing.Color.Indigo;
+            this.QPanel.Appearance.FocusBorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.QPanel.Appearance.OperatorColor = System.Drawing.Color.MediumBlue;
+            this.QPanel.Appearance.ShowRootRow = true;
+            this.QPanel.BackColor = System.Drawing.Color.White;
+            this.QPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.QPanel.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.QPanel.Location = new System.Drawing.Point(7, 14);
+            this.QPanel.Name = "QPanel";
+            this.QPanel.Query = null;
+            this.QPanel.Size = new System.Drawing.Size(639, 212);
+            this.QPanel.TabIndex = 27;
+            this.QPanel.TabStop = true;
+            this.QPanel.ListRequest += new Korzh.EasyQuery.WinForms.ListRequestEventHandler(this.QPanel_ListRequest);
+            // 
+            // groupBoxColumns
+            // 
+            this.groupBoxColumns.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxColumns.Controls.Add(this.CPanel);
+            this.groupBoxColumns.Location = new System.Drawing.Point(0, 3);
+            this.groupBoxColumns.Name = "groupBoxColumns";
+            this.groupBoxColumns.Size = new System.Drawing.Size(418, 142);
+            this.groupBoxColumns.TabIndex = 33;
+            this.groupBoxColumns.TabStop = false;
+            this.groupBoxColumns.Text = "Query Columns";
+            // 
+            // QCPanel
+            // 
+            this.CPanel.Active = false;
+            this.CPanel.ActiveRowIndex = -1;
+            this.CPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CPanel.Appearance.ActiveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(225)))), ((int)(((byte)(190)))));
+            this.CPanel.Appearance.ActiveForeColor = System.Drawing.SystemColors.HighlightText;
+            this.CPanel.Appearance.AdditionRowColor = System.Drawing.Color.DarkGreen;
+            this.CPanel.Appearance.AttrElementFormat = "{entity} {attr}";
+            this.CPanel.Appearance.BackColor = System.Drawing.Color.LightYellow;
+            this.CPanel.Appearance.ButtonForeColor = System.Drawing.SystemColors.ControlText;
+            this.CPanel.Appearance.FocusBorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CPanel.Appearance.Title = "";
+            this.CPanel.BackColor = System.Drawing.Color.LightYellow;
+            this.CPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CPanel.EditMode = Korzh.EasyQuery.WinForms.ColumnsPanel.EditModeKind.All;
+            this.CPanel.Location = new System.Drawing.Point(7, 18);
+            this.CPanel.Name = "QCPanel";
+            this.CPanel.Query = null;
+            this.CPanel.Size = new System.Drawing.Size(406, 118);
+            this.CPanel.TabIndex = 27;
+            this.CPanel.TabStop = true;
+            // 
+            // groupBoxSorting
+            // 
+            this.groupBoxSorting.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxSorting.Controls.Add(this.SPanel);
+            this.groupBoxSorting.Location = new System.Drawing.Point(414, 0);
+            this.groupBoxSorting.Name = "groupBoxSorting";
+            this.groupBoxSorting.Size = new System.Drawing.Size(234, 142);
+            this.groupBoxSorting.TabIndex = 30;
+            this.groupBoxSorting.TabStop = false;
+            this.groupBoxSorting.Text = "Columns Sorting";
+            // 
+            // SCPanel
+            // 
+            this.SPanel.Active = false;
+            this.SPanel.ActiveRowIndex = -1;
+            this.SPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SPanel.Appearance.ActiveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(225)))), ((int)(((byte)(190)))));
+            this.SPanel.Appearance.ActiveForeColor = System.Drawing.SystemColors.HighlightText;
+            this.SPanel.Appearance.AdditionRowColor = System.Drawing.Color.DarkGreen;
+            this.SPanel.Appearance.AttrElementFormat = "{entity} {attr}";
+            this.SPanel.Appearance.BackColor = System.Drawing.Color.LightYellow;
+            this.SPanel.Appearance.ButtonForeColor = System.Drawing.SystemColors.ControlText;
+            this.SPanel.Appearance.FocusBorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SPanel.Appearance.Title = "";
+            this.SPanel.BackColor = System.Drawing.Color.LightYellow;
+            this.SPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.SPanel.EditMode = Korzh.EasyQuery.WinForms.ColumnsPanel.EditModeKind.All;
+            this.SPanel.Location = new System.Drawing.Point(6, 18);
+            this.SPanel.Name = "SCPanel";
+            this.SPanel.Query = null;
+            this.SPanel.Size = new System.Drawing.Size(222, 118);
+            this.SPanel.SortEditMode = Korzh.EasyQuery.WinForms.SortingPanel.SortEditModeKind.All;
+            this.SPanel.TabIndex = 28;
+            this.SPanel.TabStop = true;
+            // 
+            // groupBoxEntities
+            // 
+            this.groupBoxEntities.Controls.Add(this.EntPanel);
+            this.groupBoxEntities.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupBoxEntities.Location = new System.Drawing.Point(0, 0);
+            this.groupBoxEntities.Name = "groupBoxEntities";
+            this.groupBoxEntities.Size = new System.Drawing.Size(179, 374);
+            this.groupBoxEntities.TabIndex = 29;
+            this.groupBoxEntities.TabStop = false;
+            this.groupBoxEntities.Text = "Objects and their attributes";
+            // 
+            // EntPanel
+            // 
+            this.EntPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.EntPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.EntPanel.ImageAddColumns = ((System.Drawing.Image)(resources.GetObject("EntPanel.ImageAddColumns")));
+            this.EntPanel.ImageAddConditions = ((System.Drawing.Image)(resources.GetObject("EntPanel.ImageAddConditions")));
+            this.EntPanel.ImageSelectAll = ((System.Drawing.Image)(resources.GetObject("EntPanel.ImageSelectAll")));
+            this.EntPanel.ImageSelectNone = ((System.Drawing.Image)(resources.GetObject("EntPanel.ImageSelectNone")));
+            this.EntPanel.Location = new System.Drawing.Point(3, 16);
+            this.EntPanel.Name = "EntPanel";
+            this.EntPanel.Query = null;
+            this.EntPanel.ShowFilter = true;
+            this.EntPanel.Size = new System.Drawing.Size(173, 355);
+            this.EntPanel.TabIndex = 29;
             // 
             // panelBottom
             // 
@@ -225,83 +365,6 @@
             this.panelQuery.Size = new System.Drawing.Size(655, 374);
             this.panelQuery.TabIndex = 33;
             // 
-            // groupBoxColumns
-            // 
-            this.groupBoxColumns.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxColumns.Controls.Add(this.QCPanel);
-            this.groupBoxColumns.Location = new System.Drawing.Point(0, 3);
-            this.groupBoxColumns.Name = "groupBoxColumns";
-            this.groupBoxColumns.Size = new System.Drawing.Size(418, 142);
-            this.groupBoxColumns.TabIndex = 33;
-            this.groupBoxColumns.TabStop = false;
-            this.groupBoxColumns.Text = "Query Columns";
-            // 
-            // QCPanel
-            // 
-            this.QCPanel.Active = false;
-            this.QCPanel.ActiveRowIndex = -1;
-            this.QCPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.QCPanel.Appearance.ActiveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(225)))), ((int)(((byte)(190)))));
-            this.QCPanel.Appearance.ActiveForeColor = System.Drawing.SystemColors.HighlightText;
-            this.QCPanel.Appearance.AdditionRowColor = System.Drawing.Color.DarkGreen;
-            this.QCPanel.Appearance.AttrElementFormat = "{entity} {attr}";
-            this.QCPanel.Appearance.BackColor = System.Drawing.Color.LightYellow;
-            this.QCPanel.Appearance.ButtonForeColor = System.Drawing.SystemColors.ControlText;
-            this.QCPanel.Appearance.FocusBorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.QCPanel.Appearance.Title = "";
-            this.QCPanel.BackColor = System.Drawing.Color.LightYellow;
-            this.QCPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.QCPanel.EditMode = Korzh.EasyQuery.WinForms.QueryColumnsPanel.EditModeKind.All;
-            this.QCPanel.Location = new System.Drawing.Point(7, 18);
-            this.QCPanel.Name = "QCPanel";
-            this.QCPanel.Query = null;
-            this.QCPanel.Size = new System.Drawing.Size(406, 118);
-            this.QCPanel.TabIndex = 27;
-            this.QCPanel.TabStop = true;
-            // 
-            // groupBoxConditions
-            // 
-            this.groupBoxConditions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxConditions.Controls.Add(this.QPanel);
-            this.groupBoxConditions.Location = new System.Drawing.Point(0, 145);
-            this.groupBoxConditions.Name = "groupBoxConditions";
-            this.groupBoxConditions.Size = new System.Drawing.Size(652, 229);
-            this.groupBoxConditions.TabIndex = 2;
-            this.groupBoxConditions.TabStop = false;
-            this.groupBoxConditions.Text = "Query Conditions";
-            // 
-            // QPanel
-            // 
-            this.QPanel.Active = false;
-            this.QPanel.ActiveRowIndex = -1;
-            this.QPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.QPanel.Appearance.ActiveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(225)))), ((int)(((byte)(190)))));
-            this.QPanel.Appearance.ActiveForeColor = System.Drawing.SystemColors.HighlightText;
-            this.QPanel.Appearance.AdditionRowColor = System.Drawing.Color.DarkGreen;
-            this.QPanel.Appearance.ButtonForeColor = System.Drawing.SystemColors.ControlText;
-            this.QPanel.Appearance.DefaultListControlType = "LISTBOX";
-            this.QPanel.Appearance.ExprColor = System.Drawing.Color.Indigo;
-            this.QPanel.Appearance.FocusBorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.QPanel.Appearance.OperatorColor = System.Drawing.Color.MediumBlue;
-            this.QPanel.Appearance.ShowRootRow = true;
-            this.QPanel.BackColor = System.Drawing.Color.White;
-            this.QPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.QPanel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.QPanel.Location = new System.Drawing.Point(7, 14);
-            this.QPanel.Name = "QPanel";
-            this.QPanel.Query = null;
-            this.QPanel.Size = new System.Drawing.Size(639, 212);
-            this.QPanel.TabIndex = 27;
-            this.QPanel.TabStop = true;
-            this.QPanel.ListRequest += new Korzh.EasyQuery.WinForms.ListRequestEventHandler(this.QPanel_ListRequest);
-            // 
             // panelColumns
             // 
             this.panelColumns.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -312,43 +375,6 @@
             this.panelColumns.Size = new System.Drawing.Size(651, 142);
             this.panelColumns.TabIndex = 4;
             // 
-            // groupBoxSorting
-            // 
-            this.groupBoxSorting.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxSorting.Controls.Add(this.SCPanel);
-            this.groupBoxSorting.Location = new System.Drawing.Point(414, 0);
-            this.groupBoxSorting.Name = "groupBoxSorting";
-            this.groupBoxSorting.Size = new System.Drawing.Size(234, 142);
-            this.groupBoxSorting.TabIndex = 30;
-            this.groupBoxSorting.TabStop = false;
-            this.groupBoxSorting.Text = "Columns Sorting";
-            // 
-            // SCPanel
-            // 
-            this.SCPanel.Active = false;
-            this.SCPanel.ActiveRowIndex = -1;
-            this.SCPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SCPanel.Appearance.ActiveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(225)))), ((int)(((byte)(190)))));
-            this.SCPanel.Appearance.ActiveForeColor = System.Drawing.SystemColors.HighlightText;
-            this.SCPanel.Appearance.AdditionRowColor = System.Drawing.Color.DarkGreen;
-            this.SCPanel.Appearance.AttrElementFormat = "{entity} {attr}";
-            this.SCPanel.Appearance.BackColor = System.Drawing.Color.LightYellow;
-            this.SCPanel.Appearance.ButtonForeColor = System.Drawing.SystemColors.ControlText;
-            this.SCPanel.Appearance.FocusBorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.SCPanel.Appearance.Title = "";
-            this.SCPanel.BackColor = System.Drawing.Color.LightYellow;
-            this.SCPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SCPanel.EditMode = Korzh.EasyQuery.WinForms.QueryColumnsPanel.EditModeKind.All;
-            this.SCPanel.Location = new System.Drawing.Point(6, 18);
-            this.SCPanel.Name = "SCPanel";
-            this.SCPanel.Query = null;
-            this.SCPanel.Size = new System.Drawing.Size(222, 118);
-            this.SCPanel.SortEditMode = Korzh.EasyQuery.WinForms.SortColumnsPanel.SortEditModeKind.All;
-            this.SCPanel.TabIndex = 28;
-            this.SCPanel.TabStop = true;
-            // 
             // splitter4
             // 
             this.splitter4.BackColor = System.Drawing.SystemColors.Control;
@@ -358,34 +384,9 @@
             this.splitter4.TabIndex = 32;
             this.splitter4.TabStop = false;
             // 
-            // groupBoxEntities
-            // 
-            this.groupBoxEntities.Controls.Add(this.EntPanel);
-            this.groupBoxEntities.Dock = System.Windows.Forms.DockStyle.Left;
-            this.groupBoxEntities.Location = new System.Drawing.Point(0, 0);
-            this.groupBoxEntities.Name = "groupBoxEntities";
-            this.groupBoxEntities.Size = new System.Drawing.Size(179, 374);
-            this.groupBoxEntities.TabIndex = 29;
-            this.groupBoxEntities.TabStop = false;
-            this.groupBoxEntities.Text = "Objects and their attributes";
-            // 
-            // EntPanel
-            // 
-            this.EntPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.EntPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.EntPanel.ImageAddColumns = ((System.Drawing.Image)(resources.GetObject("EntPanel.ImageAddColumns")));
-            this.EntPanel.ImageAddConditions = ((System.Drawing.Image)(resources.GetObject("EntPanel.ImageAddConditions")));
-            this.EntPanel.ImageSelectAll = ((System.Drawing.Image)(resources.GetObject("EntPanel.ImageSelectAll")));
-            this.EntPanel.ImageSelectNone = ((System.Drawing.Image)(resources.GetObject("EntPanel.ImageSelectNone")));
-            this.EntPanel.Location = new System.Drawing.Point(3, 16);
-            this.EntPanel.Name = "EntPanel";
-            this.EntPanel.Query = null;
-            this.EntPanel.ShowFilter = true;
-            this.EntPanel.Size = new System.Drawing.Size(173, 355);
-            this.EntPanel.TabIndex = 29;
-            // 
             // panelButtons
             // 
+
             this.panelButtons.Controls.Add(this.btClear);
             this.panelButtons.Controls.Add(this.btLoad);
             this.panelButtons.Controls.Add(this.btSave);
@@ -460,9 +461,7 @@
             this.groupBoxEntities.ResumeLayout(false);
             this.panelButtons.ResumeLayout(false);
             this.ResumeLayout(false);
-
         }
-
         #endregion
 
     }
