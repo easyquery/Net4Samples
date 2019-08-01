@@ -33,9 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Korzh.EasyQuery.Db" Version="5.2.0-rc2" />
-    <PackageReference Include="Korzh.EasyQuery.DataExport" Version="5.2.0-rc2" />
-    <PackageReference Include="Korzh.EasyQuery.WinForms" Version="5.2.0-rc2" />
+    <PackageReference Include="Korzh.EasyQuery.Db" Version="5.2.0-rc3" />
+    <PackageReference Include="Korzh.EasyQuery.DataExport" Version="5.2.0-rc3" />
+    <PackageReference Include="Korzh.EasyQuery.WinForms" Version="5.2.0-rc3" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbInitalizer.cs" />
