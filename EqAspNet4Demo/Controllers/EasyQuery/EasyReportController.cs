@@ -31,7 +31,7 @@ namespace EqAspNet4Demo.Controllers
 
             //allow save query on sync for users with eq-manager role
             options.SaveQueryOnSync = User.IsInRole("eq-manager");
-
+            options.SaveNewQuery = true;
 
             var dbContext = ApplicationDbContext.Create();
             options.UseDbContext(dbContext, config => { 
