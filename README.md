@@ -1,5 +1,13 @@
 # EasyQuery .NET Framework Samples
 
+## Packages
+
+|NuGet Stable|NuGet Preview|NPM Latest|
+|---|---|---|
+|[![NuGet](https://img.shields.io/nuget/v/Korzh.EasyQuery.AspNet4)](https://www.nuget.org/packages/Korzh.EasyQuery.AspNetCore)|[![NuGet](https://img.shields.io/nuget/vpre/Korzh.EasyQuery.AspNet4)](https://www.nuget.org/packages/Korzh.EasyQuery.AspNetCore)|[![Npm](https://img.shields.io/npm/v/@easyquery/ui/latest)](https://www.npmjs.com/package/@easyquery/ui)|
+
+## About
+
 This repository contains several .NET Framework projects which demonstrate how to use [EasyQuery library](https://korzh.com/easyquery) in different .NET applications (ASP.NET, ASP.NET WebForms, WinFroms and WPF).
 
 ## Prerequisites
