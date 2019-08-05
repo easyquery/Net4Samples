@@ -4,7 +4,7 @@
 
 |NuGet Stable|NuGet Preview|NPM Latest|
 |---|---|---|
-|[![NuGet](https://img.shields.io/nuget/v/Korzh.EasyQuery.AspNet4)](https://www.nuget.org/packages/Korzh.EasyQuery.AspNetCore)|[![NuGet](https://img.shields.io/nuget/vpre/Korzh.EasyQuery.AspNet4)](https://www.nuget.org/packages/Korzh.EasyQuery.AspNetCore)|[![Npm](https://img.shields.io/npm/v/@easyquery/ui/latest)](https://www.npmjs.com/package/@easyquery/ui)|
+|[![NuGet](https://img.shields.io/nuget/v/Korzh.EasyQuery.AspNet4)](https://www.nuget.org/packages/Korzh.EasyQuery.AspNet4)|[![NuGet](https://img.shields.io/nuget/vpre/Korzh.EasyQuery.AspNet4)](https://www.nuget.org/packages/Korzh.EasyQuery.AspNet4)|[![Npm](https://img.shields.io/npm/v/@easyquery/ui/latest)](https://www.npmjs.com/package/@easyquery/ui)|
 
 ## About
 
