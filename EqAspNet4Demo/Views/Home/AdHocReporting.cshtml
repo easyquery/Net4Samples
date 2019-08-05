@@ -135,10 +135,10 @@ To test that functionlity - please log out first and create a new user.
     </script>
 
     <script>
-        window.addEventListener('load', () => {
+        window.addEventListener('load', function () {
 
             //Options for ReportViewJQuery
-            let options = {
+            var options = {
 
                 //Saves report on each change
                 syncReportOnChange: true,
@@ -147,7 +147,7 @@ To test that functionlity - please log out first and create a new user.
                     //Show EasyChart
                     showChart: true,
 
-                    chartProviderResolver: () => { return new easyquery.ui.GoogleChartProvider() },
+                    chartProviderResolver: function() { return new easyquery.ui.GoogleChartProvider() },
 
                     //Paging options
                     paging: {
@@ -204,7 +204,7 @@ To test that functionlity - please log out first and create a new user.
                 }
             };
 
-            let reportView = new easyquery.ui.ReportViewJQuery();
+            var reportView = new easyquery.ui.ReportViewJQuery();
             reportView.init(options);
             document['ReportViewJQuery'] = reportView;
         });

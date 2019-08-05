@@ -3,8 +3,8 @@
 <asp:Content ID="StylesContent" ContentPlaceHolderID="StylesPlaceHolder" runat="server">
     <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.12.1/themes/blitzer/jquery-ui.css">
 
-    <link rel="stylesheet" href="https://cdn.korzh.com/eq/5.1.5/eq.core.min.css">
-    <link rel="stylesheet" href="https://cdn.korzh.com/eq/5.1.5/eq.view.min.css">
+    <link rel="stylesheet" href="https://cdn.korzh.com/eq/5.1.7/eq.core.min.css">
+    <link rel="stylesheet" href="https://cdn.korzh.com/eq/5.1.7/eq.view.min.css">
 
     <style>
         .eqv-dropdown-content {
@@ -25,12 +25,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" type="text/javascript"></script>
 
     <!-- EasyQuery script -->
-    <script src="https://cdn.korzh.com/eq/5.1.5/eq.all.min.js"></script>
+    <script src="https://cdn.korzh.com/eq/5.1.7/eq.all.min.js"></script>
 
 
     <!-- EasyQuery Advanced Search view initialization -->
     <script>
-        window.addEventListener('load', () => {
+        window.addEventListener('load', function () {
 
             //Options for AdvancedSearchViewJQuery
             var options = {
@@ -55,7 +55,7 @@
                 //Handlers
                 handlers: {
                     //Error handler
-                    onError: (error) => {
+                    onError: function (error) {
                         console.error(error.action + " error:\n" + error.text);
                     }
                 },
