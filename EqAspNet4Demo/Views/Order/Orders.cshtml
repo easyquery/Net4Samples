@@ -25,8 +25,8 @@
 
     <!-- EasyQuery script files -->
     <script>
-        window.addEventListener('load', () => {
-            let options = {
+        window.addEventListener('load', function () {
+            var options = {
                 loadModelOnStart: true,
                 clearResultOnQueryChange: false,
                 broker: {
@@ -45,7 +45,7 @@
                     }
                 }
             }
-            let view = new easyquery.ui.HtmlDataFilterView();
+            var view = new easyquery.ui.HtmlDataFilterView();
             view.init(options);
         });
     </script>
