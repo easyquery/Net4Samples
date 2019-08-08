@@ -33,7 +33,7 @@ To run these samples you will need:
 
 This project implements several of the most usual scenarios of using EasyQuery in an ASP.NET MVC web-application. We tried to combine all these cases in one application for two reasons:
 
-* to simplify the demonstration process since it's more easy to set up and run one project instead of several different projects.
+* to simplify the demonstration process since it's easier to set up and run one project instead of several different projects.
 * to show how to configure different scenarios of using EasyQuery in one application.
 
 So, when you start this sample project you will see an index page which leads you to the following demo pages:
@@ -52,14 +52,14 @@ The page is available at `Views/Home/AdhocReporting.cshtml`. The server-side par
 
 To implement this scenario we used a totally different approach. The page which is responsible for the implementation of this scenario is available at `Views/Order/Orders.cshtml`. The only widget added on that page is `FilterBar`.
 
-Instead of WebAPI controller the server-side part in this scenario is handled by a usual MVC controller (`Controllers/OrderController.cs` file). Basically, in addition to `Index` action it contains only 3 extra methods which handles the requests from EasyQuery client-side code: `GetModel` (returns the model), `GetList` (returns the lists of values for lookup columns) and `ApplyQueryFilter` which executes the query (filter) over `Orders` DbSet using `DynamicQuery` extension method and passes the result lost of orders to `_OrderListPartial` partial view for rendering.
+Instead of WebAPI controller, the server-side part in this scenario is handled by a usual MVC controller (`Controllers/OrderController.cs` file). Basically, in addition to `Index` action it contains only 3 extra methods which handles the requests from EasyQuery client-side code: `GetModel` (returns the model), `GetList` (returns the lists of values for lookup columns) and `ApplyQueryFilter` which executes the query (filter) over `Orders` DbSet using `DynamicQuery` extension method and passes the result lost of orders to `_OrderListPartial` partial view for rendering.
 
 This is a great demonstration of using EasyQuery components without a WebAPI.
 
 ### Full-text search
 
 The last scenario is even simpler than the previous one. It demonstrates how quickly you can implement a full-text search over your database with only one useful extension function provided by EasyQuery: `FullTextSearchQuery`.
-The page is implementat as usual MVC action/view pari (`Controllers/CustomerController` and `Views/Customer/Customers.cshtml`). It does not contain any EasyQuery JavaScript at all. All the magic happens in the `Index` method of the controller's class: we just call our `FullTextSearchQuery` function over the `Customers` DB set there.
+The page is implemented as usual MVC action/view pair (`Controllers/CustomerController` and `Views/Customer/Customers.cshtml`). It does not contain any EasyQuery JavaScript at all. All the magic happens in the `Index` method of the controller's class: we just call our `FullTextSearchQuery` function over the `Customers` DB set there.
 On the page, we also use `EqHighLightFor` HTML helper to highlight the found parts of the text inside the data table.
 
 ## Sample database
