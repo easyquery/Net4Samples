@@ -27,6 +27,18 @@ namespace EqAspNet4Demo.Controllers
             options.UseModelLoader((_) => new FileModelLoader(path));
             options.UseQueryStore((_) => new FileQueryStore(path));
 
+            // Uncomment this line if you want to load model directly from connection 
+            // Do not forget to uncomment SqlClientGate registration in WebApiConfig.cs file
+            //options.UseDbConnectionModelLoader(config => {
+            //    // Ignores Asp.Net Identity tables
+            //    config.AddTableFilter((table) => !table.Name.StartsWith("Asp") 
+            //                                  && table.Name != "IdentityUsers"
+            //                                  && table.Name != "__MigrationHistory");
+
+            //    // Ignores Reports table
+            //    config.AddTableFilter((table) => table.Name != "Reports");
+            //});
+
             options.UsePaging(30);
         }
     }

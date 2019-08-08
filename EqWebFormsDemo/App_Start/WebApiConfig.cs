@@ -25,8 +25,8 @@ namespace EqWebFormsDemo
 
             // Register you exportes here
             // to make export works
-            EasyQueryManagerBase.RegisterExporter("csv", new CsvDataExporter());
-            EasyQueryManagerBase.RegisterExporter("excel-html", new ExcelHtmlDataExporter());
+            EasyQueryManager.RegisterExporter("csv", new CsvDataExporter());
+            EasyQueryManager.RegisterExporter("excel-html", new ExcelHtmlDataExporter());
         }
     }
 
