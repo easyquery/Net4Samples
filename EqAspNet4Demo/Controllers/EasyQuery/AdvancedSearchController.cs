@@ -1,27 +1,28 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Configuration;
+using System.Web.Http;
 using System.Data.SqlClient;
 
 using Korzh.EasyQuery.Services;
 using Korzh.EasyQuery.AspNet;
 
-using EqAspNet4Demo.Services;
-
 namespace EqAspNet4Demo.Controllers
 {
-
-
     [RoutePrefix("api/easyquery")]
     public class AdvancedSearchController : EasyQueryApiController
     {
-
         protected override void ConfigureEasyQueryOptions(EasyQueryOptions options)
         {
             options.UseManager<EasyQueryManagerSql>();
             options.DefaultModelId = "NWindSQL";
             options.BuildQueryOnSync = true;
 
-            var connectionString = ConfigurationManagerWrapper.GetConnectionString("DefaultConncetion");
-            options.UseDbConnection<SqlConnection>(connectionString);
+            ConnectionStringSettings connectionSettings = ConfigurationManager.ConnectionStrings["DefaultConnection"];
+            if (connectionSettings == null || string.IsNullOrEmpty(connectionSettings.ConnectionString)) {
+                throw new Exception("Fatal error: missing connecting string in web.config file");
+            }
+
+            options.UseDbConnection<SqlConnection>(connectionSettings.ConnectionString);
 
             var path = System.Web.Hosting.HostingEnvironment.MapPath("~/App_Data");
             options.UseModelLoader((_) => new FileModelLoader(path));

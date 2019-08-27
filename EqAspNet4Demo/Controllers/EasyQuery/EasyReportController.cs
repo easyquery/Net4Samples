@@ -26,7 +26,7 @@ namespace EqAspNet4Demo.Controllers
             //options.DefaultModelId = "adhoc-reporting";
 
             options.StoreModelInCache = true;
-            //it is required to register caching service, when StoreInCache is turn on
+            //it is required to register caching service, when StoreInCache is turned on
             options.UseCaching((_) => new EqSessionCachingService());
 
             //allow save query on sync for users with eq-manager role
