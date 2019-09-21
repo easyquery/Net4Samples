@@ -24,7 +24,6 @@ namespace EqAspNet4Demo.Controllers
         [Route("advanced-search")]
         public ActionResult AdvancedSearch()
         {
-
             return View();
         }
 

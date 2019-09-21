@@ -13,7 +13,6 @@ namespace EqAspNet4Demo
     {
         protected void Application_Start()
         {
-
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
@@ -21,7 +20,6 @@ namespace EqAspNet4Demo
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             GlobalConfiguration.Configuration.EnsureInitialized();
-
         }
 
         void Session_Start(object sender, EventArgs e)
@@ -35,6 +33,5 @@ namespace EqAspNet4Demo
             //here we enable session for WebApi Controllers
             System.Web.HttpContext.Current.SetSessionStateBehavior(System.Web.SessionState.SessionStateBehavior.Required);
         }
-
     }
 }
