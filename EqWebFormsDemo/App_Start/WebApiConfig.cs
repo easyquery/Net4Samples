@@ -12,6 +12,7 @@ namespace EqWebFormsDemo
     {
         public static void Register(HttpConfiguration config)
         {
+            Korzh.EasyQuery.AspNet.License.Key = "w5T2jSxvpyT39qaz5N6wegGBP921ZI";
             // Web API configuration and services
 
             // Web API routes

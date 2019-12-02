@@ -41,11 +41,6 @@
     padding-bottom: 0;
 }
 
-.eqjs-cb-addrow {
-    left: 12px !important;
-    top: 13px !important;
-}
-
 .block-caption {
     font-weight: 500;
 }
@@ -54,9 +49,9 @@
     padding-top: 0.1rem;
 }
 
-.card-header-button button {
-    height: 1.7rem;
-}
+    .card-header-button button {
+        height: 1.7rem;
+    }
 
 .list-group-item.active {
     border-radius: .25rem;
