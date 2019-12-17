@@ -5,8 +5,8 @@
 }
 
 @section Styles {
-    <link rel="stylesheet" href="https://cdn.korzh.com/eq/6.0.0-rc4/eq.core.min.css">
-    <link rel="stylesheet" href="https://cdn.korzh.com/eq/6.0.0-rc4/eq.view.min.css">
+    <link rel="stylesheet" href="https://cdn.korzh.com/eq/6.0.0-rc8/eq.core.min.css">
+    <link rel="stylesheet" href="https://cdn.korzh.com/eq/6.0.0-rc8/eq.view.min.css">
 }
 
 <div class="eqjs-process-bar" id="ProcessBar"></div>
@@ -110,14 +110,12 @@
 
 @section Scripts {
 
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
-
     <!-- ChartJS script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js" type="text/javascript"></script>
 
     <!-- EasyQuery script -->
-    <!--<script src="https://cdn.korzh.com/eq/6.0.0-rc4/eq.community.min.js"></script>-->
-    <script src="https://cdn.korzh.com/eq/6.0.0-rc4/eq.enterprise.min.js"></script>
+    <!--<script src="https://cdn.korzh.com/eq/6.0.0-rc8/eq.community.min.js"></script>-->
+    <script src="https://cdn.korzh.com/eq/6.0.0-rc8/eq.enterprise.min.js"></script>
 
     <!-- EasyQuery Advanced Search view initialization -->
     <script>
@@ -188,7 +186,7 @@
                 }
             }
             this.view = new easyquery.ui.AdvancedSearchView();
-            this.view.getContext().useEnterprise('AlzWbvUgrkISH9AEAEoV7wBKJXGX14');
+            this.view.getContext().useEnterprise('@Korzh.EasyQuery.AspNet.JSLicense.Key');
             view.init(options);
             document['AdvancedSearchView'] = view;
         });

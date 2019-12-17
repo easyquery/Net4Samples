@@ -23,8 +23,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" type="text/javascript"></script>
 
     <!-- EasyQuery script -->
-    <!--<script src="https://cdn.korzh.com/eq/6.0.0-rc4/eq.community.min.js"></script>-->
-    <script src="https://cdn.korzh.com/eq/6.0.0-rc4/eq.enterprise.min.js"></script>
+    <!--<script src="https://cdn.korzh.com/eq/6.0.0-rc8/eq.community.min.js"></script>-->
+    <script src="https://cdn.korzh.com/eq/6.0.0-rc8/eq.enterprise.min.js"></script>
 
 
     <!-- EasyQuery Advanced Search view initialization -->
@@ -106,7 +106,7 @@
             }
 
             var view = new easyquery.ui.AdvancedSearchView();
-            view.getContext().useEnterprise('AlzWbvUgrkISH9AEAEoV7wBKJXGX14')
+            view.getContext().useEnterprise('<% Response.Write(Korzh.EasyQuery.AspNet.JSLicense.Key); %>')
             view.init(options);
 
             document['AdvancedSearchView'] = view;
