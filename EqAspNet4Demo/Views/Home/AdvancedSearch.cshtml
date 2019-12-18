@@ -2,11 +2,11 @@
 
     ViewData["Title"] = "Advanced Search demo";
     ViewData["MenuTitle"] = "Advanced Search demo";
- }
+}
 
 @section Styles {
-    <link rel="stylesheet" href="https://cdn.korzh.com/eq/5.1.12/eq.core.min.css">
-    <link rel="stylesheet" href="https://cdn.korzh.com/eq/5.1.12/eq.view.min.css">
+    <link rel="stylesheet" href="https://cdn.korzh.com/eq/6.0.0/eq.core.min.css">
+    <link rel="stylesheet" href="https://cdn.korzh.com/eq/6.0.0/eq.view.min.css">
 }
 
 <div class="eqjs-process-bar" id="ProcessBar"></div>
@@ -110,13 +110,12 @@
 
 @section Scripts {
 
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
-
     <!-- ChartJS script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js" type="text/javascript"></script>
 
     <!-- EasyQuery script -->
-    <script src="https://cdn.korzh.com/eq/5.1.12/eq.all.min.js"></script>
+    <!--<script src="https://cdn.korzh.com/eq/6.0.0/eq.community.min.js"></script>-->
+    <script src="https://cdn.korzh.com/eq/6.0.0/eq.enterprise.min.js"></script>
 
     <!-- EasyQuery Advanced Search view initialization -->
     <script>
@@ -132,39 +131,15 @@
                 //Default model ID
                 defaultModelId: "NWindSQL",
                 enableExport: true,
-                broker: {
-                    endpoint: "/api/easyquery"
-                },
+
+                // Controller endpoint
+                endpoint: "/api/easyquery",
+
                 //Handlers
                 handlers: {
                     //Error handler
                     onError: function (error) {
                         console.error(error.action + " error:\n" + error.text);
-                    },
-                    //Client-side list resolver
-                    listRequestHandler: function (params, onResult) {
-                        var processed = true;
-                        if (params.listName == "RegionList") {
-                            var query = document['AdvancedSearchViewJQuery'].getContext().getQuery();
-                            var country = query.getOneValueForAttr("Customer.Country");
-                            if (country == "Canada") {
-                                onResult([
-                                    { id: "BC", text: "British Columbia" },
-                                    { id: "Quebec", text: "Quebec" }
-                                ]);
-                            }
-                            else {
-                                onResult([
-                                    { id: "CA", text: "California" },
-                                    { id: "CO", text: "Colorado" },
-                                    { id: "OR", text: "Oregon" },
-                                    { id: "WA", text: "Washington" }
-                                ]);
-                            }
-                        }
-                        else
-                            processed = false;
-                        return processed;
                     }
                 },
                 //Widgets options
@@ -210,11 +185,10 @@
                     showChart: true
                 }
             }
-            this.view = new easyquery.ui.AdvancedSearchViewJQuery();
-            //basic jquery dialog service implementation
-            //view.setDialogService(new easyquery.ui.JQueryDialogService());
+            this.view = new easyquery.ui.AdvancedSearchView();
+            this.view.getContext().useEnterprise('@Korzh.EasyQuery.AspNet.JSLicense.Key');
             view.init(options);
-            document['AdvancedSearchViewJQuery'] = view;
+            document['AdvancedSearchView'] = view;
         });
     </script>
 }
