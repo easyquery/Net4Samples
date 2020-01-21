@@ -45,8 +45,8 @@ namespace EqAspNet4Demo.Controllers
         /// <summary>
         /// Gets the model by its ID
         /// </summary>
-        /// <param name="jsonDict">The JsonDict object which contains request parameters</param>
-        /// <returns><see cref="IActionResult"/> object with JSON representation of the model</returns>
+        /// <param name="modelId">The ID of the model that will be loaded</param>
+        /// <returns><see cref="ActionResult"/> An ActionResult object with JSON representation of the model</returns>
         [HttpGet]
         [Route("models/{modelId}")]
         public async Task<ActionResult> GetModelAsync(string modelId)
@@ -56,15 +56,15 @@ namespace EqAspNet4Demo.Controllers
         }
 
         /// <summary>
-        /// This action returns a custom list by different list request options (list name).
+        /// This action returns a list values for specified value editor.
         /// </summary>
-        /// <param name="jsonDict">GetList request options.</param>
-        /// <returns><see cref="ActionResult"/> object</returns>
+        /// <param name="modelId">The ID of the model the value editor belongs to.</param>
+        /// <param name="modelId">The ID of the value editor. It can be any LIST value editor (SQL LIST, CONST LIST, etc).</param>
+        /// <returns>A <see cref="ActionResult"/> object with a JSON represantation of the list.</returns>
         [HttpGet]
         [Route("models/{modelId}/valuelists/{editorId}")]
         public async Task<ActionResult> GetList(string modelId, string editorId)
         {
-
             var list = await _eqManager.GetValueListAsync(modelId, editorId);
 
             return this.EqOk(new { values = list });
@@ -73,7 +73,7 @@ namespace EqAspNet4Demo.Controllers
         /// <summary>
         /// This action is called when user clicks on "Apply" button in FilterBar or other data-filtering widget
         /// </summary>
-        /// <returns>ActionResult which contains a partial view with the filtered result set</returns>
+        /// <returns>An ActionResult object that contains a partial view with the filtered result set.</returns>
         [HttpPost]
         [Route("models/{modelId}/queries/{queryId}/execute")]
         public async Task<ActionResult> ApplyQueryFilter(string modelId, string queryId)
