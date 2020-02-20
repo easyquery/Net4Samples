@@ -185,9 +185,11 @@
                     showChart: true
                 }
             }
-            this.view = new easyquery.ui.AdvancedSearchView();
-            this.view.getContext().useEnterprise('@Korzh.EasyQuery.AspNet.JSLicense.Key');
+
+            var view = new easyquery.ui.AdvancedSearchView();
+            view.getContext().useEnterprise('@Korzh.EasyQuery.AspNet.JSLicense.Key');
             view.init(options);
+
             document['AdvancedSearchView'] = view;
         });
     </script>

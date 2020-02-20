@@ -94,6 +94,7 @@
             var view = new easyquery.ui.AdvancedSearchView();
             view.getContext().useEnterprise('<% Response.Write(Korzh.EasyQuery.AspNet.JSLicense.Key) %>')
             view.init(options);
+            
             document['AdvancedSearchView'] = view;
         });
     </script>
