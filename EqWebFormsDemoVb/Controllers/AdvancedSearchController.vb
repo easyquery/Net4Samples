@@ -12,7 +12,8 @@ Public Class AdvancedSearchController : Inherits EasyQueryApiController
     Protected Overrides Sub ConfigureEasyQueryOptions(options As EasyQueryOptions)
 
         options.UseManager(Of EasyQueryManagerSql)()
-        options.DefaultModelId = "CRMS"
+
+        options.DefaultModelId = "NWindSQL"
         options.BuildQueryOnSync = True
 
         Dim connectionString As String = ConfigurationManager.ConnectionStrings.Item("DefaultConnection").ConnectionString

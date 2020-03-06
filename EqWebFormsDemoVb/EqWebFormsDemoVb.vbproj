@@ -115,9 +115,9 @@
     <PackageReference Include="Microsoft.AspNet.WebApi.WebHost">
       <Version>5.2.7</Version>
     </PackageReference>
-    <PackageReference Include="Korzh.EasyQuery.Db" Version="5.3.3" />
-    <PackageReference Include="Korzh.EasyQuery.DataExport" Version="5.3.3" />
-    <PackageReference Include="Korzh.EasyQuery.AspNet4" Version="5.3.3" />
+    <PackageReference Include="Korzh.EasyQuery.Db" Version="5.3.4" />
+    <PackageReference Include="Korzh.EasyQuery.DataExport" Version="5.3.4" />
+    <PackageReference Include="Korzh.EasyQuery.AspNet4" Version="5.3.4" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.vb" />
@@ -221,6 +221,8 @@
     <Content Include="Site.Mobile.Master" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
+    <Content Include="App_Data\EqDemoDb.sql" />
+    <Content Include="App_Data\NWindSQL.xml" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
