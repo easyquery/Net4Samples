@@ -31,6 +31,12 @@
     <Editor id="VE_Customer_Country" type="SQLLIST" resType="Unknown">
       <SQL><![CDATA[SELECT DISTINCT [Country], [Country] FROM [Customers] ORDER BY 1]]></SQL>
     </Editor>
+    <Editor id="VE_Customer_City" type="SQLLIST" resType="Unknown">
+      <SQL><![CDATA[SELECT DISTINCT [City], [City] FROM [Customers] ORDER BY 1]]></SQL>
+      <ExtraParams>
+        <Param name="[Country]" value="@{{Customer.Country}}" />
+      </ExtraParams>
+    </Editor>
     <Editor id="VE_Employee_Country" type="SQLLIST" resType="Unknown">
       <SQL><![CDATA[SELECT DISTINCT [Country], [Country] FROM [Employees] ORDER BY 1]]></SQL>
     </Editor>
@@ -211,7 +217,7 @@
         <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,InSubQuery,NotInSubQuery</Operators>
         <Description />
       </Attr>
-      <Attr id="Customer.City" kind="Data" expr="City" caption="City" type="String" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="Customers">
+      <Attr id="Customer.City" kind="Data" expr="City" caption="City" type="String" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="True" UAL="True" aggr="False" tables="Customers" editor="VE_Customer_City">
         <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,InSubQuery,NotInSubQuery,IsNull,IsNotNull</Operators>
         <Description />
       </Attr>

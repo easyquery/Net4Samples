@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="EasyQuery" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="EasyQuery.aspx.vb" Inherits="EqWebFormsDemoVb.EasyQuery" %>
 <asp:Content ID="StylesContent" ContentPlaceHolderID="StylesPlaceHolder" runat="server">
 
-    <link rel="stylesheet" href="https://cdn.korzh.com/eq/6.0.7/eq.core.min.css">
-    <link rel="stylesheet" href="https://cdn.korzh.com/eq/6.0.7/eq.view.min.css">
+    <link rel="stylesheet" href="https://cdn.korzh.com/eq/6.0.8/eq.core.min.css">
+    <link rel="stylesheet" href="https://cdn.korzh.com/eq/6.0.8/eq.view.min.css">
 
     <style>
         .eqv-dropdown-content {
@@ -21,8 +21,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" type="text/javascript"></script>
 
     <!-- EasyQuery script -->
-    <!--<script src="https://cdn.korzh.com/eq/6.0.7/eq.community.min.js"></script>-->
-    <script src="https://cdn.korzh.com/eq/6.0.7/eq.enterprise.min.js"></script>
+    <!--<script src="https://cdn.korzh.com/eq/6.0.8/eq.community.min.js"></script>-->
+    <script src="https://cdn.korzh.com/eq/6.0.8/eq.enterprise.min.js"></script>
 
 
     <!-- EasyQuery Advanced Search view initialization -->
