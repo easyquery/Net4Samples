@@ -7,19 +7,6 @@ using System.Web;
 
 namespace EqWebFormsDemo.Controllers
 {
-
-    public class SessionPreExecuteTuner : IEasyQueryManagerTuner
-    {
-        public bool Tune(EasyQueryManager manager)
-        {
-            var districtCode = (string)HttpContext.Current.Session["DistrictCode"];
-
-            manager.Query.ExtraConditions.AddSimpleCondition("PregnantWoman.DistrictCode", "Equal", districtCode);
-
-            return true;
-        }
-    }
-
     [RoutePrefix("api/easyquery")]
     public class AdvancedSearchController : EasyQueryApiController
     {
@@ -41,6 +28,18 @@ namespace EqWebFormsDemo.Controllers
             options.AddPreExecuteTuner(new SessionPreExecuteTuner());
 
             options.UsePaging(30);
+        }
+    }
+
+    public class SessionPreExecuteTuner : IEasyQueryManagerTuner
+    {
+        public bool Tune(EasyQueryManager manager)
+        {
+            //An example of how you can add an extra condtion before query execution
+            //var userId = (string)HttpContext.Current.Session["UserId"];
+            //manager.Query.ExtraConditions.AddSimpleCondition("Users.Id", "Equal", userId);
+
+            return true;
         }
     }
 }
