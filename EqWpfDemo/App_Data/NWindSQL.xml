@@ -1,8 +1,16 @@
-﻿<DataModel name="" formatVersion="13" modelVersion="1" defQuery="" id="NWindSQL">
+﻿<DataModel name="" formatVersion="14" modelVersion="2" defQuery="" id="NWindSQL">
   <Description />
   <CustomInfo />
-  <DMEOptions />
-  <DBParams />
+  <DMEOptions>
+    <listBoxTablesWidth>286</listBoxTablesWidth>
+    <FormWidth>903</FormWidth>
+    <FormHeight>664</FormHeight>
+  </DMEOptions>
+  <DBParams>
+    <ConnectionString />
+    <LoginPrompt>False</LoginPrompt>
+    <GateClass>Korzh.EasyQuery.DbGates.SqlClientGate</GateClass>
+  </DBParams>
   <Tables>
     <Table class="db" alias="Customers" schema="" db="" dsgnLayout="" priority="1000" name="Customers" hints="" quote="False" />
     <Table class="db" alias="Employees" schema="" db="" dsgnLayout="" priority="1000" name="Employees" hints="" quote="False" />
@@ -31,27 +39,29 @@
     <Editor id="VE_Customer.Country" type="SQLLIST" resType="Unknown">
       <SQL><![CDATA[SELECT DISTINCT [Country], [Country] FROM [Customers] ORDER BY 1]]></SQL>
     </Editor>
-    <Editor id="VE_Employee.Country" type="SQLLIST" resType="Unknown">
+    <Editor id="VE_Employee_Country" type="SQLLIST" resType="Unknown">
       <SQL><![CDATA[SELECT DISTINCT [Country], [Country] FROM [Employees] ORDER BY 1]]></SQL>
     </Editor>
     <Editor id="VE_Employee.ManagerEmployeeID" type="SQLLIST" resType="Unknown">
       <SQL><![CDATA[SELECT DISTINCT [EmployeeID], [FirstName] FROM [Employees] ORDER BY 1]]></SQL>
     </Editor>
-    <Editor id="VE_Order.CustomerID" type="SQLLIST" resType="Unknown">
+    <Editor id="VE_Order_CustomerID" type="SQLLIST" resType="Unknown">
       <SQL><![CDATA[SELECT DISTINCT [CustomerID], [CompanyName] FROM [Customers] ORDER BY 1]]></SQL>
     </Editor>
-    <Editor id="VE_Order.EmployeeId" type="SQLLIST" resType="Unknown">
+    <Editor id="VE_Order_EmployeeId" type="SQLLIST" resType="Unknown">
       <SQL><![CDATA[SELECT DISTINCT [EmployeeID], [FirstName] FROM [Employees] ORDER BY 1]]></SQL>
     </Editor>
-    <Editor id="VE_Order.ProductID" type="SQLLIST" resType="Unknown">
+    <Editor id="VE_Order_ProductID" type="SQLLIST" resType="Unknown">
       <SQL><![CDATA[SELECT DISTINCT [ProductID], [ProductName] FROM [Products] ORDER BY 1]]></SQL>
     </Editor>
-    <Editor id="VE_OrderDetail.OrderID" type="SQLLIST" resType="Unknown">
+    <Editor id="VE_OrderDetail_OrderID" type="SQLLIST" resType="Unknown">
       <SQL><![CDATA[SELECT DISTINCT [OrderID], [ShipName] FROM [Orders] ORDER BY 1]]></SQL>
     </Editor>
-    <Editor id="VE_OrderDetail.ProductID" type="SQLLIST" resType="Unknown">
+    <Editor id="VE_OrderDetail_ProductID" type="SQLLIST" resType="Unknown">
       <SQL><![CDATA[SELECT DISTINCT [ProductID], [ProductName] FROM [Products] ORDER BY 1]]></SQL>
     </Editor>
+    <Editor id="CLVE34" type="CUSTOMLIST" resType="Unknown" name="Regions" />
+    <Editor id="CLVE23" type="CUSTOMLIST" resType="Unknown" name="CityList" />
   </Editors>
   <Operators>
     <Operator id="Equal" caption="is equal to" expr="{expr1} = {expr2}" format="{expr1} [[is equal to]] {expr2}" constFmt="{const}" kind="Scalar" caseIns="False" group="Common operators" cond="False">
@@ -173,8 +183,8 @@
     <Operator id="DatePeriodPrecise" caption="custom period" expr="{expr1} BETWEEN {expr2} AND {expr3}" format="{expr1} [[within]] {expr2} and {expr3}" constFmt="{const}" kind="Scalar" isRange="True" caseIns="False" editor="_DPDE" group="Date/time operators" cond="False">
       <Types>Date,Time,DateTime,Float</Types>
       <Operands defType="Unknown" defVal="${Today}">
-        <Operand type="Unknown" kind="Scalar" defVal="${FirstDayOfMonth}" />
-        <Operand type="Unknown" kind="Scalar" defVal="${Today}" />
+        <Operand type="Unknown" kind="Scalar" val="${FirstDayOfMonth}" />
+        <Operand type="Unknown" kind="Scalar" val="${Today}" />
       </Operands>
     </Operator>
     <Operator id="TimeBeforePrecise" caption="before" expr="{expr1} &lt; {expr2}" format="{expr1} [[before]] {expr2}" constFmt="{const}" kind="Scalar" caseIns="False" editor="_DPTE" group="Date/time operators" cond="False">
@@ -188,16 +198,16 @@
     <Operator id="TimePeriodPrecise" caption="between" expr="{expr1} BETWEEN {expr2} AND {expr3}" format="{expr1} [[between]] {expr2} and {expr3}" constFmt="{const}" kind="Scalar" isRange="True" caseIns="False" editor="_DPTE" group="Date/time operators" cond="False">
       <Types>Date,Time,DateTime,Float</Types>
       <Operands defType="Unknown" defVal="${Today}">
-        <Operand type="Unknown" kind="Scalar" defVal="${HourStart}" />
-        <Operand type="Unknown" kind="Scalar" defVal="${Now}" />
+        <Operand type="Unknown" kind="Scalar" val="${HourStart}" />
+        <Operand type="Unknown" kind="Scalar" val="${Now}" />
       </Operands>
     </Operator>
     <Operator id="MaximumOfAttr" caption="is maximum of" expr="{expr1} = (SELECT MAX({expr2.field}) FROM {expr2.table})" format="{expr1} [[is equal to maximum of]] {expr2}" constFmt="{const}" kind="Attribute" caseIns="False" group="Other operators" cond="False">
       <Types>String,Byte,Word,Int32,Int64,Bool,Float,Currency,BCD,Autoinc,Memo,FixedChar</Types>
       <Operands defType="Unknown" />
     </Operator>
-    <Operator id="InRange" caption="is in range" expr="{expr1} BETWEEN {expr2[0]} AND {expr2[1]}" format="{expr1} [[is in range]] {expr2}" constFmt="{const}" kind="List" caseIns="False" editor="InRangeEditor" group="Other operators" cond="False">
-      <Types>Byte,Word,Int,Int32,Int64,Float</Types>
+    <Operator id="InRange" caption="is in range" expr="{expr1} BETWEEN {expr2[0]} AND {expr2[1]}" format="{expr1} [[is in range]] {expr2}" constFmt="{const}" kind="List" caseIns="False" group="Other operators" cond="False">
+      <Types>Byte,Word,Int32,Int64,Float</Types>
       <Operands defType="Unknown" />
     </Operator>
     <Operator id="LastNMonth" caption="Last N months" expr="DATEDIFF(month, {expr1}, GETDATE()) &lt; {expr2}" format="{expr1} [[within last]] {expr2} months" constFmt="{const}" kind="Scalar" caseIns="False" group="Other operators" cond="False">
@@ -207,19 +217,19 @@
   </Operators>
   <Entities maxId="0">
     <Entity id="Customer" name="Client" UIC="True" UIR="True" UIS="True">
-      <Attr id="Customer.CustomerID" kind="Data" expr="CustomerID" caption="Customer i d" type="String" size="0" UIC="False" UIR="False" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="Customers">
+      <Attr id="Customer.CustomerID" expr="CustomerID" caption="Customer ID" type="String" size="0" UIC="False" UIR="False" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="Customers">
         <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,InSubQuery,NotInSubQuery</Operators>
         <Description />
       </Attr>
-      <Attr id="Customer.City" kind="Data" expr="City" caption="City" type="String" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="Customers">
+      <Attr id="Customer.CompanyName" expr="CompanyName" caption="Company Name" type="String" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="Customers">
         <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,InSubQuery,NotInSubQuery,IsNull,IsNotNull</Operators>
         <Description />
       </Attr>
-      <Attr id="Customer.CompanyName" kind="Data" expr="CompanyName" caption="Company Name" type="String" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="Customers">
+      <Attr id="Customer.ContactName" expr="ContactName" caption="Contact name" type="String" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="Customers">
         <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,InSubQuery,NotInSubQuery,IsNull,IsNotNull</Operators>
         <Description />
       </Attr>
-      <Attr id="Customer.ContactName" kind="Data" expr="ContactName" caption="Contact name" type="String" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="Customers">
+      <Attr id="Customer.ContactTitle" expr="ContactTitle" caption="Contact title" type="String" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="Customers">
         <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,InSubQuery,NotInSubQuery,IsNull,IsNotNull</Operators>
         <Description />
       </Attr>
@@ -227,7 +237,7 @@
         <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,InSubQuery,NotInSubQuery,IsNull,IsNotNull</Operators>
         <Description />
       </Attr>
-      <Attr id="Customer.Country" kind="Data" expr="Country" caption="Country" type="String" size="0" UIC="True" UIR="True" UIS="True" customFunc="" editor="VE_Customer.Country" quote="False" UAL="True" aggr="False" tables="Customers">
+      <Attr id="Customer.Country" kind="Data" expr="Country" caption="Country" type="String" size="0" UIC="True" UIR="True" UIS="True" customFunc="" editor="VE_Customer_Country" quote="False" UAL="True" aggr="False" tables="Customers">
         <Operators>Equal,InList,NotEqual,NotInList,IsNull</Operators>
         <Description />
       </Attr>
@@ -243,7 +253,7 @@
         <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,InSubQuery,NotInSubQuery,IsNull,IsNotNull</Operators>
         <Description />
       </Attr>
-      <Attr id="Customer.Region" kind="Data" expr="Region" caption="Region" type="String" size="0" UIC="True" UIR="True" UIS="True" customFunc="" quote="False" UAL="True" aggr="False" tables="Customers">
+      <Attr id="Customer.Region" kind="Data" expr="Region" caption="Region" type="String" size="0" UIC="True" UIR="True" UIS="True" customFunc="" editor="CLVE34" quote="False" UAL="True" aggr="False" tables="Customers">
         <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,InSubQuery,NotInSubQuery,IsNull,IsNotNull</Operators>
         <Description />
       </Attr>
@@ -265,7 +275,7 @@
         <Operators>StartsWith,Contains,Equal,InList,NotStartsWith,NotContains,NotEqual,NotInList,InSubQuery,NotInSubQuery,IsNull,IsNotNull</Operators>
         <Description />
       </Attr>
-      <Attr id="Employee.Country" kind="Data" expr="Country" caption="Country" type="String" size="0" UIC="True" UIR="True" UIS="True" customFunc="" editor="VE_Employee.Country" quote="False" UAL="True" aggr="False" tables="Employees">
+      <Attr id="Employee.Country" kind="Data" expr="Country" caption="Country" type="String" size="0" UIC="True" UIR="True" UIS="True" customFunc="" editor="VE_Employee_Country" quote="False" UAL="True" aggr="False" tables="Employees">
         <Operators>Equal,InList,NotEqual,NotInList,IsNull</Operators>
         <Description />
       </Attr>
@@ -327,11 +337,11 @@
         <Operators>Equal,Between,LessThan,LessOrEqual,GreaterThan,GreaterOrEqual,InList,NotEqual,NotBetween,NotInList,MaximumOfAttr,InSubQuery,NotInSubQuery</Operators>
         <Description />
       </Attr>
-      <Attr id="Order.CustomerID" kind="Data" expr="CustomerID" caption="Customer" type="String" size="0" UIC="True" UIR="False" UIS="True" customFunc="" editor="VE_Order.CustomerID" quote="False" UAL="True" aggr="False" tables="Orders">
+      <Attr id="Order.CustomerID" kind="Data" expr="CustomerID" caption="Customer" type="String" size="0" UIC="True" UIR="False" UIS="True" customFunc="" editor="VE_Order_CustomerID" quote="False" UAL="True" aggr="False" tables="Orders">
         <Operators>Equal,NotEqual,InList,NotInList,IsNull,IsNotNull</Operators>
         <Description />
       </Attr>
-      <Attr id="Order.EmployeeID" kind="Data" expr="EmployeeID" caption="Employee" type="Int32" size="0" UIC="True" UIR="False" UIS="True" customFunc="" editor="VE_Order.EmployeeId" quote="False" UAL="True" aggr="False" tables="Orders">
+      <Attr id="Order.EmployeeID" kind="Data" expr="EmployeeID" caption="Employee" type="Int32" size="0" UIC="True" UIR="False" UIS="True" customFunc="" editor="VE_Order_EmployeeId" quote="False" UAL="True" aggr="False" tables="Orders">
         <Operators>Equal,NotEqual,InList,NotInList</Operators>
         <Description />
       </Attr>
@@ -381,11 +391,11 @@
       </Attr>
     </Entity>
     <Entity id="OrderDetail" name="Order detail" UIC="True" UIR="True" UIS="True">
-      <Attr id="OrderDetail.OrderID" kind="Data" expr="OrderID" caption="Order" type="Int32" size="0" UIC="True" UIR="False" UIS="True" customFunc="" editor="VE_OrderDetail.OrderID" quote="False" UAL="True" aggr="False" tables="OrderDetails">
+      <Attr id="OrderDetail.OrderID" kind="Data" expr="OrderID" caption="Order" type="Int32" size="0" UIC="True" UIR="False" UIS="True" customFunc="" editor="VE_OrderDetail_OrderID" quote="False" UAL="True" aggr="False" tables="OrderDetails">
         <Operators>Equal,NotEqual,InList,NotInList</Operators>
         <Description />
       </Attr>
-      <Attr id="OrderDetail.ProductID" kind="Data" expr="ProductID" caption="Product" type="Int32" size="0" UIC="True" UIR="False" UIS="True" customFunc="" editor="VE_OrderDetail.ProductID" quote="False" UAL="True" aggr="False" tables="OrderDetails">
+      <Attr id="OrderDetail.ProductID" kind="Data" expr="ProductID" caption="Product" type="Int32" size="0" UIC="True" UIR="False" UIS="True" customFunc="" editor="VE_OrderDetail_ProductID" quote="False" UAL="True" aggr="False" tables="OrderDetails">
         <Operators>Equal,NotEqual,InList,NotInList</Operators>
         <Description />
       </Attr>
