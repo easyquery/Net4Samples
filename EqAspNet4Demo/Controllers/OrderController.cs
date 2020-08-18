@@ -89,7 +89,7 @@ namespace EqAspNet4Demo.Controllers
                 .OrderBy(o => o.Id)
                 .DynamicQuery<Order>(query);
 
-            var list = queryable.ToPagedList(_eqManager.Paging.PageIndex, 15);
+            var list = queryable.ToPagedList(_eqManager.Chunk.Page, 15);
 
             return View("_OrderListPartial", list);
         }
