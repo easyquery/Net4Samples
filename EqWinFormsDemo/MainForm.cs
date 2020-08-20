@@ -69,7 +69,7 @@ namespace EqWinFormsDemo
 
         public MainForm()
         {
-            Korzh.EasyQuery.WinForms.License.Key = "w5T2jSxvpyT39qaz5N6wegHBF0369I";
+            Korzh.EasyQuery.WinForms.License.Key = "ZNQbiled5JoJMwzArFmSSQHSF2J783";
 
             _appDirectory = System.IO.Directory.GetCurrentDirectory();
             _dataFolder = System.IO.Path.Combine(_appDirectory, "App_Data");
