@@ -48,17 +48,25 @@ namespace EqAspNet4Demo
 
                 var reportGenerator = new DefaultReportGenerator(context);
                 var user = userManager.FindByEmail(defaultUserEmail);
-                if (user == null) {
-                    user = new ApplicationUser {
-                        Email = defaultUserEmail,
-                        UserName = defaultUserEmail,
-                        EmailConfirmed = true
-                    };
+                if (user != null) {
+                    context.Reports.RemoveRange(context.Reports.Where(r => r.OwnerId == user.Id));
+                    context.SaveChanges();
 
-                    var result = userManager.Create(user, defaultUserPassword);
-                    if (result.Succeeded) {
-                        reportGenerator.Generate(user);
-                    }
+                    userManager.Delete(user);
+                    user = null;
+                }
+
+                user = new ApplicationUser
+                {
+                    Email = defaultUserEmail,
+                    UserName = defaultUserEmail,
+                    EmailConfirmed = true
+                };
+
+                var result = userManager.Create(user, defaultUserPassword);
+                if (result.Succeeded)
+                {
+                    reportGenerator.Generate(user);
                 }
             }
         }
