@@ -150,24 +150,10 @@ To test that functionlity - please log out first and create a new user.
         window.addEventListener('load', function () {
 
             //Options for ReportView
-            var options = {
+            var viewOptions = {
 
                 //Saves report on each change
                 syncReportOnChange: true,
-
-                result: {
-                    //Show EasyChart
-                    showChart: true,
-
-                    chartWidgetResolver: function (slot) { return new easyquery.ui.GoogleChartWidget(slot) },
-
-                    //Paging options
-                    paging: {
-
-                        //max count of displayed buttons
-                        maxButtonCount: 10
-                    }
-                },
 
                 //Load model on start
                 loadModelOnStart: true,
@@ -182,6 +168,7 @@ To test that functionlity - please log out first and create a new user.
 
                 //Different widgets options
                 widgets: {
+
                     //ColumnBar options
                     columnsBar: {
                         accentActiveColumn: false,
@@ -204,19 +191,14 @@ To test that functionlity - please log out first and create a new user.
                             showSearchBoxAfter: 20,
                             activateOnMouseOver: true
                         }
-                    },
-
-                    //EqResultGrid options
-                    eqResultGrid: {
-                        tableClass: "table table-sm"
                     }
                 }
             };
 
             var reportView = new easyquery.ui.ReportView();
             reportView.getContext().useEnterprise('@Korzh.EasyQuery.AspNet.JSLicense.Key');
+            reportView.init(viewOptions);
 
-            reportView.init(options);
             document['ReportView'] = reportView;
         });
     </script>

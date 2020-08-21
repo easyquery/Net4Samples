@@ -27,28 +27,24 @@
     <!-- EasyQuery script files -->
     <script>
         window.addEventListener('load', function () {
-            var options = {
+            var viewOptions = {
                 loadModelOnStart: true,
                 clearResultOnQueryChange: false,
-                broker: {
-                    endpoint: "data-filtering"
-                },
+                endpoint: "data-filtering"
                 widgets: {
                     filterBar: {
                         queryPanel: {
                             attrElementFormat: "{entity} {attr}"
                         }
-                    }
-                },
-                result: {
-                    paging: {
+                    },
+                    eqHtmlGrid: {
                         useBootstrap: true
                     }
                 }
             }
             var view = new easyquery.ui.HtmlDataFilterView();
             view.getContext().useEnterprise('@Korzh.EasyQuery.AspNet.JSLicense.Key');
-            view.init(options);
+            view.init(viewOptions);
         });
     </script>
 }

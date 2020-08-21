@@ -32,7 +32,7 @@
         window.addEventListener('load', function () {
 
             //Options for AdvancedSearchViewJQuery
-            var options = {
+            var viewOptions = {
                 //Load model on start
                 loadModelOnStart: true,
 
@@ -98,6 +98,9 @@
                             activateOnMouseOver: true
                         }
                     },
+                    resultGrid: {
+                        autoHeight: true
+                    }
                 },
                 result: {
                     //Show EasyChart
@@ -107,7 +110,7 @@
 
             var view = new easyquery.ui.AdvancedSearchView();
             view.getContext().useEnterprise('<% Response.Write(Korzh.EasyQuery.AspNet.JSLicense.Key); %>')
-            view.init(options);
+            view.init(viewOptions);
 
             document['AdvancedSearchView'] = view;
         });
