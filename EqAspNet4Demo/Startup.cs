@@ -20,6 +20,5 @@ namespace EqAspNet4Demo
             IdentityHelper.SeedEqManagerRole();
             IdentityHelper.SeedDefaultUser();
         }
-
     }
 }

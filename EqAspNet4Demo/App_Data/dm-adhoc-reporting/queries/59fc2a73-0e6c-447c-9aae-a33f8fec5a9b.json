@@ -100,5 +100,23 @@
         ]
       }
     ]
+  },
+  "innerData": {
+    "facets": {
+      "active": 1,
+      "items": [
+        {
+          "title": "Result set",
+          "type": "DATA_GRID"
+        },
+        {
+          "title": "Pie Chart",
+          "type": "CHART",
+          "chartType": 10,
+          "labelCol": 0,
+          "dataCol": 4
+        }
+      ]
+    }
   }
 }

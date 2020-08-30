@@ -20,6 +20,9 @@ namespace EqAspNet4Demo
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             GlobalConfiguration.Configuration.EnsureInitialized();
+
+            Korzh.EasyQuery.AspNet.License.Key = "ZNQbiled5JoJMwzArFmSSQDSU0J8UX";
+            Korzh.EasyQuery.AspNet.JSLicense.Key = "voC5XVNcovrofRwXkHNKEABNJ4VH40";
         }
 
         void Session_Start(object sender, EventArgs e)

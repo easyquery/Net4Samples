@@ -13,8 +13,8 @@ To test that functionlity - please log out first and create a new user.
 @section Styles {
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.korzh.com/eq/6.0.13/eq.core.min.css">
-    <link rel="stylesheet" href="https://cdn.korzh.com/eq/6.0.13/eq.view.min.css">
+    <link rel="stylesheet" href="https://cdn.korzh.com/eq/6.1.0/eq.core.min.css">
+    <link rel="stylesheet" href="https://cdn.korzh.com/eq/6.1.0/eq.view.min.css">
     <link rel="stylesheet" href="~/Content/adhoc-reporting.css" />
 
 
@@ -46,7 +46,12 @@ To test that functionlity - please log out first and create a new user.
                 <div class="card-header">
                     <div class="card-title float-left">Reports</div>
                     <div class="dropdown float-right card-header-button">
-                        <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-cog"></i></button>
+                        <button id="dropdownMenuButton" class="btn btn-default btn-sm dropdown-toggle" 
+                                type="button" data-toggle="dropdown" 
+                                aria-haspopup="true" 
+                                aria-expanded="false">
+                                    <i class="fas fa-cog"></i>
+                        </button>
                         @if (isDefaultUser)
                         {
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" data-toggle="tooltip" data-html="true" data-placement="bottom"
@@ -101,28 +106,38 @@ To test that functionlity - please log out first and create a new user.
                         <div id="QueryPanel" class="query-panel"></div>
                     </div>
                     <div class="result-block">
-                        <div class="float-right" id="ResultCount"></div>
                         <div class="block-caption">Result:</div>
-                        <div id="ResultPanel" class="eqv-result-panel-content"></div>
+                        <!--<div id="ResultPanel" class="eqv-result-panel-content"></div>-->
+                        <div id="ResultFacetsPanel"></div>
+                    </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row " id="NoReportPanel" style="visibility:hidden;">
-        <div class="col-md-12">
-            <h3 class="text-center">
-                No reports are defined. <a id="FirstReportButton" href="javascript:document['ReportView'].newReport()">Create a first one</a> to start.
-            </h3>
+        <div class="row " id="NoReportPanel" style="visibility:hidden;">
+            <div class="col-md-12">
+                @if (!isDefaultUser)
+                {
+                    <h3 class="text-center">
+                        No reports are defined. <a id="FirstReportButton" href="javascript:document['ReportView'].newReport()">Create a first one</a> to start.
+                    </h3>
+                }
+                else
+                {
+                    <h3 class="text-center">
+                        No reports are defined. <span id="FirstReportButton" title="@tooltipContent" data-toggle="tooltip" data-placement="top" style="text-decoration: underline">Create a first one</span> to start.
+                    </h3>
+
+                }
+            </div>
         </div>
     </div>
-</div>
 
 @section Scripts {
 
     <!-- EasyQuery script -->
-    <!--<script src="https://cdn.korzh.com/eq/6.0.13/eq.community.min.js"></script>-->
-    <script src="https://cdn.korzh.com/eq/6.0.13/eq.enterprise.min.js"></script>
+    <!--<script src="https://cdn.korzh.com/eq/6.1.0/eq.community.min.js"></script>-->
+    <script src="https://cdn.korzh.com/eq/6.1.0/eq.enterprise.min.js"></script>
 
     <script>
         $(function () {

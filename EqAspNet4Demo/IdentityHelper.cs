@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 using EqAspNet4Demo.Models;
 using EqAspNet4Demo.Services;
+using System.Configuration;
 
 namespace EqAspNet4Demo
 {
@@ -33,9 +34,9 @@ namespace EqAspNet4Demo
             const string defaultUserEmail = "demo@korzh.com";
             const string defaultUserPassword = "demo";
 
-            using (var context = ApplicationDbContext.Create())
+            using (var dbContext = ApplicationDbContext.Create())
             {
-                var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+                var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(dbContext));
                 // Configure validation logic for passwords
                 userManager.PasswordValidator = new PasswordValidator
                 {
@@ -46,8 +47,20 @@ namespace EqAspNet4Demo
                     RequireUppercase = false,
                 };
 
-                var reportGenerator = new DefaultReportGenerator(context);
+                var resetDemoUserStr = ConfigurationManager.AppSettings["resetDefaultUser"];
+                var resetDemoUser = resetDemoUserStr != null ? bool.Parse(resetDemoUserStr) : true;
+
                 var user = userManager.FindByEmail(defaultUserEmail);
+
+                //remove default user if "resetDefaultUser" option is set to true
+                if (resetDemoUser && user != null) {
+                    dbContext.Reports.RemoveRange(dbContext.Reports.Where(r => r.OwnerId == user.Id));
+                    dbContext.SaveChanges();
+
+                    userManager.DeleteAsync(user).GetAwaiter().GetResult();
+                    user = null;
+                }
+
                 if (user == null) {
                     user = new ApplicationUser {
                         Email = defaultUserEmail,
@@ -57,6 +70,7 @@ namespace EqAspNet4Demo
 
                     var result = userManager.Create(user, defaultUserPassword);
                     if (result.Succeeded) {
+                        var reportGenerator = new DefaultReportGenerator(dbContext);
                         reportGenerator.Generate(user);
                     }
                 }
