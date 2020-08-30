@@ -17,10 +17,6 @@ namespace EqAspNet4Demo
     {
         public static void Register(HttpConfiguration config)
         {
-            
-            Korzh.EasyQuery.AspNet.License.Key = "ZNQbiled5JoJMwzArFmSSQGSP5J77Y";
-            Korzh.EasyQuery.AspNet.JSLicense.Key = "voC5XVNcovrofRwXkHNKEABNJ4VH40";
-
             // Web API configuration and services
 
             // Web API routes

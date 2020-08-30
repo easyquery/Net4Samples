@@ -123,6 +123,5 @@ namespace EqAspNet4Demo.Services
             var userId = User?.Identity.GetUserId();
             return filter.Where(r => r.OwnerId == userId);
         }
-
     }
 }
