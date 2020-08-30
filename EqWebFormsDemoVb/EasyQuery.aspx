@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="EasyQuery" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="EasyQuery.aspx.vb" Inherits="EqWebFormsDemoVb.EasyQuery" %>
 <asp:Content ID="StylesContent" ContentPlaceHolderID="StylesPlaceHolder" runat="server">
 
-    <link rel="stylesheet" href="https://cdn.korzh.com/eq/6.0.8/eq.core.min.css">
-    <link rel="stylesheet" href="https://cdn.korzh.com/eq/6.0.8/eq.view.min.css">
+    <link rel="stylesheet" href="https://cdn.korzh.com/eq/6.1.0/eq.core.min.css">
+    <link rel="stylesheet" href="https://cdn.korzh.com/eq/6.1.0/eq.view.min.css">
 
     <style>
         .eqv-dropdown-content {
@@ -21,15 +21,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" type="text/javascript"></script>
 
     <!-- EasyQuery script -->
-    <!--<script src="https://cdn.korzh.com/eq/6.0.8/eq.community.min.js"></script>-->
-    <script src="https://cdn.korzh.com/eq/6.0.8/eq.enterprise.min.js"></script>
+    <!--<script src="https://cdn.korzh.com/eq/6.1.0/eq.community.min.js"></script>-->
+    <script src="https://cdn.korzh.com/eq/6.1.0/eq.enterprise.min.js"></script>
 
 
     <!-- EasyQuery Advanced Search view initialization -->
     <script>
         window.addEventListener('load', function () {
             //Options for AdvancedSearchViewJQuery
-            var options = {
+            var viewOptions = {
                 //Load model on start
                 loadModelOnStart: true,
                 //Load query on start
@@ -85,6 +85,9 @@
                             activateOnMouseOver: true
                         }
                     },
+                    resultGrid: {
+                        autoHeight: true
+                    }
                 },
                 result: {
                     //Show EasyChart
@@ -93,7 +96,7 @@
             }
             var view = new easyquery.ui.AdvancedSearchView();
             view.getContext().useEnterprise('<% Response.Write(Korzh.EasyQuery.AspNet.JSLicense.Key) %>')
-            view.init(options);
+            view.init(viewOptions);
             
             document['AdvancedSearchView'] = view;
         });

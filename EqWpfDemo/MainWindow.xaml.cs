@@ -28,7 +28,7 @@ namespace EqWpfDemo {
         public MainWindow()
         {
 
-            Korzh.EasyQuery.Wpf.License.Key = "w5T2jSxvpyT39qaz5N6wegGB21XW7I";
+            Korzh.EasyQuery.Wpf.License.Key = "ZNQbiled5JoJMwzArFmSSQGS2XJ1XY";
 
             InitDatabase();
 
