@@ -86,7 +86,11 @@
                         }
                     },
                     resultGrid: {
-                        autoHeight: true
+                        autoHeight: true,
+                        paging: {
+                            enabled: true,
+                            pageSize: 30
+                        }
                     }
                 },
                 result: {
