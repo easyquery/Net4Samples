@@ -26,8 +26,6 @@ namespace EqWebFormsDemo.Controllers
             options.UseQueryStore((_) => new FileQueryStore(path));
 
             options.AddPreExecuteTuner(new SessionPreExecuteTuner());
-
-            options.UsePaging(30);
         }
     }
 

@@ -56,7 +56,6 @@ namespace EqAspNet4Demo.Controllers
             });
 
             options.UseQueryStore((_) => new ReportStore(dbContext, User));
-            options.UsePaging(30);
         }
     }
 }

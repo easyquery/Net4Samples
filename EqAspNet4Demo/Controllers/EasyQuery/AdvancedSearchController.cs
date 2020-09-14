@@ -39,8 +39,6 @@ namespace EqAspNet4Demo.Controllers
             //    // Ignores Reports table
             //    config.AddTableFilter((table) => table.Name != "Reports");
             //});
-
-            options.UsePaging(30);
         }
     }
 }
