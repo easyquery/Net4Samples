@@ -30,8 +30,5 @@ Public Class AdvancedSearchController : Inherits EasyQueryApiController
                 End Function
         options.UseModelLoader(modelLoader)
         options.UseQueryStore(queryStore)
-
-        options.UsePaging(30)
-
     End Sub
 End Class
