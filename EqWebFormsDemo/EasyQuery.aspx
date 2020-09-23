@@ -23,8 +23,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" type="text/javascript"></script>
 
     <!-- EasyQuery script -->
-    <!--<script src="https://cdn.korzh.com/eq/6.1.0/eq.community.min.js"></script>-->
-    <script src="https://cdn.korzh.com/eq/6.1.0/eq.enterprise.min.js"></script>
+    <!--<script src="https://cdn.korzh.com/eq/6.1.1/eq.community.min.js"></script>-->
+    <script src="https://cdn.korzh.com/eq/6.1.1/eq.enterprise.min.js"></script>
 
 
     <!-- EasyQuery Advanced Search view initialization -->
