@@ -117,8 +117,8 @@
       <Version>5.2.7</Version>
     </PackageReference>
     <PackageReference Include="Korzh.EasyQuery.Db" Version="5.4.3" />
-    <PackageReference Include="Korzh.EasyQuery.DataExport" Version="5.4.3" />
-    <PackageReference Include="Korzh.EasyQuery.AspNet4" Version="5.4.3" />
+    <PackageReference Include="Korzh.EasyQuery.DataExport" Version="5.4.4" />
+    <PackageReference Include="Korzh.EasyQuery.AspNet4" Version="5.4.4" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
