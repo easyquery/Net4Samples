@@ -5,13 +5,19 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EqAspNet4Demo", "EqAspNet4Demo\EqAspNet4Demo.csproj", "{52DE16DC-4677-4D2E-80D0-26F056A29B53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EqWinFormsDemo", "EqWinFormsDemo\EqWinFormsDemo.csproj", "{5622F0C6-C856-4122-A303-D527B9FC0518}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EqDemo.WinForms.AdvancedSearch", "EqDemo.WinForms.AdvancedSearch\EqDemo.WinForms.AdvancedSearch.csproj", "{5622F0C6-C856-4122-A303-D527B9FC0518}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EqWpfDemo", "EqWpfDemo\EqWpfDemo.csproj", "{A1ACB19F-E36C-43B8-9BC6-BA79DF916366}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EqDemo.Wpf.AdvancedSearch", "EqDemo.Wpf.AdvancedSearch\EqDemo.Wpf.AdvancedSearch.csproj", "{A1ACB19F-E36C-43B8-9BC6-BA79DF916366}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EqWebFormsDemo", "EqWebFormsDemo\EqWebFormsDemo.csproj", "{0907F31A-03D6-4A16-A16B-AB3AFC0C4E50}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EqDemo.WebForms.AdvancedSearch", "EqDemo.WebForms.AdvancedSearch\EqDemo.WebForms.AdvancedSearch.csproj", "{0907F31A-03D6-4A16-A16B-AB3AFC0C4E50}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "EqWebFormsDemoVb", "EqWebFormsDemoVb\EqWebFormsDemoVb.vbproj", "{CD8E53D2-B177-494B-AE08-1CEEF98E43D7}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "EqDemo.WebFormsVB.AdvancedSearch", "EqDemo.WebFormsVB.AdvancedSearch\EqDemo.WebFormsVB.AdvancedSearch.vbproj", "{CD8E53D2-B177-494B-AE08-1CEEF98E43D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EqDemo.AspNet4x.AdvancedSearch", "EqDemo.AspNet4x.AdvancedSearch\EqDemo.AspNet4x.AdvancedSearch.csproj", "{F063D29F-C3C2-4076-A036-F891AC8C09AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EqDemo.AspNet4x.DataFiltering", "EqDemo.AspNet4x.DataFiltering\EqDemo.AspNet4x.DataFiltering.csproj", "{25B4D977-9D95-4133-B95F-A3C88830C21F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EqDemo.AspNet4x.AdhocReporting", "EqDemo.AspNet4x.AdhocReporting\EqDemo.AspNet4x.AdhocReporting.csproj", "{420AEDD8-5D2E-4994-95B8-67644681C908}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +45,18 @@ Global
 		{CD8E53D2-B177-494B-AE08-1CEEF98E43D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD8E53D2-B177-494B-AE08-1CEEF98E43D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD8E53D2-B177-494B-AE08-1CEEF98E43D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F063D29F-C3C2-4076-A036-F891AC8C09AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F063D29F-C3C2-4076-A036-F891AC8C09AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F063D29F-C3C2-4076-A036-F891AC8C09AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F063D29F-C3C2-4076-A036-F891AC8C09AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25B4D977-9D95-4133-B95F-A3C88830C21F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25B4D977-9D95-4133-B95F-A3C88830C21F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25B4D977-9D95-4133-B95F-A3C88830C21F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25B4D977-9D95-4133-B95F-A3C88830C21F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{420AEDD8-5D2E-4994-95B8-67644681C908}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{420AEDD8-5D2E-4994-95B8-67644681C908}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{420AEDD8-5D2E-4994-95B8-67644681C908}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{420AEDD8-5D2E-4994-95B8-67644681C908}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

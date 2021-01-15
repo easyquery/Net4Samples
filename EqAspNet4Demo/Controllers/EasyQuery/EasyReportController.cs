@@ -7,10 +7,10 @@ using Korzh.EasyQuery;
 using Korzh.EasyQuery.Services;
 using Korzh.EasyQuery.AspNet;
 
-using EqAspNet4Demo.Models;
-using EqAspNet4Demo.Services;
+using EqDemo.Models;
+using EqDemo.Services;
 
-namespace EqAspNet4Demo.Controllers
+namespace EqDemo.Controllers
 {
 
     [RoutePrefix("api/adhoc-reporting")]

@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 using Korzh.EasyQuery.Services;
 using Korzh.EasyQuery.AspNet;
 
-namespace EqAspNet4Demo.Controllers
+namespace EqDemo.Controllers
 {
     [RoutePrefix("api/easyquery")]
     public class AdvancedSearchController : EasyQueryApiController

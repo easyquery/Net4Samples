@@ -8,9 +8,9 @@ using X.PagedList;
 
 using Korzh.EasyQuery.Linq;
 
-using EqAspNet4Demo.Models;
+using EqDemo.Models;
 
-namespace EqAspNet4Demo.Controllers
+namespace EqDemo.Controllers
 {
     [RoutePrefix("fulltext-search")]
     public class CustomerController: Controller

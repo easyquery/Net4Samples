@@ -1,4 +1,4 @@
-namespace EqAspNet4Demo.Migrations
+namespace EqDemo.Migrations
 {
     using System;
     using System.Data.Entity;
@@ -8,7 +8,7 @@ namespace EqAspNet4Demo.Migrations
 
     using Korzh.DbUtils;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<EqAspNet4Demo.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<EqDemo.Models.ApplicationDbContext>
     {
         public Configuration()
         {
@@ -16,7 +16,7 @@ namespace EqAspNet4Demo.Migrations
             ContextKey = "EqAspNet4Demo.Models.ApplicationDbContext";
         }
 
-        protected override void Seed(EqAspNet4Demo.Models.ApplicationDbContext context)
+        protected override void Seed(EqDemo.Models.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

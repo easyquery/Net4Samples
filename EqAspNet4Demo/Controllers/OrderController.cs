@@ -11,11 +11,11 @@ using Korzh.EasyQuery.Services;
 using Korzh.EasyQuery.Linq;
 using Korzh.EasyQuery.AspNet;
 
-using EqAspNet4Demo.Models;
+using EqDemo.Models;
 using System.IO;
 using System.Text;
 
-namespace EqAspNet4Demo.Controllers
+namespace EqDemo.Controllers
 {
     [RoutePrefix("data-filtering")]
     public class OrderController : Controller
