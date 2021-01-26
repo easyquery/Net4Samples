@@ -74,7 +74,7 @@ namespace EqDemo.Services
             if (report != null)
             {
                 await query.LoadFromJsonStringAsync(report.QueryJson);
-                query.ID = report.Id;
+                query.Id = report.Id;
 
                 return true;
             }

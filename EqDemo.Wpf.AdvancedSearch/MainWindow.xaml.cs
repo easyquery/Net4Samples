@@ -32,7 +32,7 @@ namespace EqDemo {
         public MainWindow()
         {
 
-            Korzh.EasyQuery.Wpf.License.Key = "ZNQbiled5JoJMwzArFmSSQGS2XJ1XY";
+            Korzh.EasyQuery.Wpf.License.Key = "M-Vm5PXqfpFr0P6bDruZ2wQIG1H640";
 
             InitDatabase();
 
@@ -276,9 +276,10 @@ namespace EqDemo {
                 saveFileDlg.RestoreDirectory = true;
                 bool? result = saveFileDlg.ShowDialog();
                 if (result == true) {
+                    var resultSet = new EasyDbResultSet(Query, resultDt.CreateDataReader());
                     var exporter = new ExcelHtmlDataExporter();
-                    //using (var streamWriter = File.OpenWrite(saveFileDlg.FileName))
-                       // exporter.Export(resultDt.CreateDataReader(), streamWriter);
+                    using (var fileStream = File.OpenWrite(saveFileDlg.FileName))
+                        exporter.Export(resultSet, fileStream);
                 }
             }
             catch (Exception error) {
@@ -297,9 +298,10 @@ namespace EqDemo {
                 saveFileDlg.RestoreDirectory = true;
                 bool? result = saveFileDlg.ShowDialog();
                 if (result == true) {
+                    var resultSet = new EasyDbResultSet(Query, resultDt.CreateDataReader());
                     var exporter = new CsvDataExporter();
-                    // using (var streamWriter = File.OpenWrite(saveFileDlg.FileName))
-                    //    exporter.Export(resultDt.CreateDataReader(), streamWriter);
+                    using (var fileStream = File.OpenWrite(saveFileDlg.FileName))
+                        exporter.Export(resultSet, fileStream);
                 }
             }
             catch (Exception error) {

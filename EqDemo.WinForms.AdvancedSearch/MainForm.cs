@@ -71,7 +71,7 @@ namespace EqDemo
 
         public MainForm()
         {
-            Korzh.EasyQuery.WinForms.License.Key = "ZNQbiled5JoJMwzArFmSSQHSF2J783";
+            Korzh.EasyQuery.WinForms.License.Key = "M-Vm5PXqfpFr0P6bDruZ2wQIS6HV2Y";
 
             _appDirectory = System.IO.Directory.GetCurrentDirectory();
             _dataFolder = System.IO.Path.Combine(_appDirectory, "App_Data");
@@ -337,10 +337,10 @@ namespace EqDemo
                     saveFileDialog.RestoreDirectory = true;
 
                     if (saveFileDialog.ShowDialog(this) == DialogResult.OK) {
-
                         var exporter = new CsvDataExporter();
-                        // using (var streamWriter = File.OpenWrite(saveFileDialog.FileName))
-                        //    exporter.Export(ResultDS.CreateDataReader(ResultDS.Tables.Cast<DataTable>().ToArray()), streamWriter);
+                        var resultSet = new EasyDbResultSet(_query, ResultDS.Tables[0].CreateDataReader());
+                        using (var fileStream = File.OpenWrite(saveFileDialog.FileName))
+                            exporter.Export(resultSet, fileStream);
                     }
                 }
 
@@ -362,10 +362,10 @@ namespace EqDemo
                     saveFileDialog.RestoreDirectory = true;
 
                     if (saveFileDialog.ShowDialog(this) == DialogResult.OK)  {
-
                         var exporter = new ExcelHtmlDataExporter();
-                        // using (var streamWriter = File.OpenWrite(saveFileDialog.FileName))
-                        //    exporter.Export(ResultDS.CreateDataReader(ResultDS.Tables.Cast<DataTable>().ToArray()), streamWriter);
+                        var resultSet = new EasyDbResultSet(_query, ResultDS.Tables[0].CreateDataReader());
+                        using (var fileStream = File.OpenWrite(saveFileDialog.FileName))
+                            exporter.Export(resultSet, fileStream);
                     }
                 }
 

@@ -20,7 +20,7 @@ namespace EqDemo.Services
         public DefaultReportGenerator(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
-            _dataPath = Path.Combine(System.Web.Hosting.HostingEnvironment.MapPath("~/App_Data"), $"dm-{_modelId}\\queries");
+            _dataPath = Path.Combine(System.Web.Hosting.HostingEnvironment.MapPath("~/App_Data"), "Seed");
         }
 
         public void Generate(IdentityUser user)
