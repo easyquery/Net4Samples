@@ -159,7 +159,7 @@
             this.CPanel.Appearance.Title = "";
             this.CPanel.BackColor = System.Drawing.Color.LightYellow;
             this.CPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CPanel.EditMode = Korzh.EasyQuery.WinForms.ColumnsPanel.EditModeKind.All;
+            this.CPanel.EditMode = Korzh.EasyQuery.WinForms.ColumnsPanelEditMode.All;
             this.CPanel.Location = new System.Drawing.Point(7, 18);
             this.CPanel.Name = "QCPanel";
             this.CPanel.Query = null;
@@ -195,7 +195,7 @@
             this.SPanel.Appearance.Title = "";
             this.SPanel.BackColor = System.Drawing.Color.LightYellow;
             this.SPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SPanel.EditMode = Korzh.EasyQuery.WinForms.ColumnsPanel.EditModeKind.All;
+            this.SPanel.EditMode = Korzh.EasyQuery.WinForms.ColumnsPanelEditMode.All;
             this.SPanel.Location = new System.Drawing.Point(6, 18);
             this.SPanel.Name = "SCPanel";
             this.SPanel.Query = null;

@@ -29,10 +29,10 @@ namespace EqDemo.Controllers
             var services = new EmptyServiceProvider();
 
             var options = new EasyQueryOptions(services);
-            options.UseEntity((_, __) => _dbContext.Orders);
+            options.UseEntity(_ => _dbContext.Orders);
 
             //create EasyQuery manager which generates LINQ queries
-            _eqManager = new EasyQueryManagerLinq<Order>(services, options);
+            _eqManager = new EasyQueryManagerLinq<Order>(options);
         }
 
         // GET
