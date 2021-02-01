@@ -8,9 +8,6 @@ Imports Korzh.EasyQuery.Services
 Public Module WebApiConfig
     Public Sub Register(ByVal config As HttpConfiguration)
 
-        Korzh.EasyQuery.AspNet.License.Key = "ZNQbiled5JoJMwzArFmSSQGSP5J77Y"
-        Korzh.EasyQuery.AspNet.JSLicense.Key = "voC5XVNcovrofRwXkHNKEABNJ4VH40"
-
         ' Web API configuration and services
         ' Web API routes
         Dim customRouteProvider As New WebApiCustomDirectRouteProvider

@@ -229,13 +229,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\dm-adhoc-reporting\queries\59fc2a73-0e6c-447c-9aae-a33f8fec5a9b.json" />
+    <Content Include="App_Data\Seed\59fc2a73-0e6c-447c-9aae-a33f8fec5a9b.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\dm-adhoc-reporting\queries\bb0b3e5a-294e-4088-acaa-1ff1f3731843.json" />
+    <Content Include="App_Data\Seed\bb0b3e5a-294e-4088-acaa-1ff1f3731843.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\dm-adhoc-reporting\queries\fee014cd-ad47-4a33-9c16-4cdf903bfbd2.json" />
+    <Content Include="App_Data\Seed\fee014cd-ad47-4a33-9c16-4cdf903bfbd2.json" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201907161537049_InitialCreate.resx">

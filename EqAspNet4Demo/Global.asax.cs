@@ -21,8 +21,9 @@ namespace EqDemo
 
             GlobalConfiguration.Configuration.EnsureInitialized();
 
-            Korzh.EasyQuery.AspNet.License.Key = "ZNQbiled5JoJMwzArFmSSQDSU0J8UX";
-            Korzh.EasyQuery.AspNet.JSLicense.Key = "voC5XVNcovrofRwXkHNKEABNJ4VH40";
+            // License key
+            Korzh.EasyQuery.AspNet.License.Key = "M-Vm5PXqfpFr0P6bDruZ2wQIC0HYW2";
+            Korzh.EasyQuery.AspNet.JSLicense.Key = "M-Vm5PXqfpFr0P6bDruZ2wBIJ1H334";
         }
 
         void Session_Start(object sender, EventArgs e)
