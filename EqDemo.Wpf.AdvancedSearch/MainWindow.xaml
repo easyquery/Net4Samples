@@ -1788,7 +1788,7 @@
             <Button Focusable="False" Margin="5" HorizontalAlignment="Right" Width="81" Click="Clear_Click" Content="Clear"/>
             <Button Focusable="False" Margin="5" HorizontalAlignment="Right" Width="81" Click="Save_Click" Content="Save Query"/>
             <Button Focusable="False" Margin="5" HorizontalAlignment="Right" Width="81" Click="Load_Click" Content="Load Query"/>
-            <Button x:Name="buttonExecute" Focusable="False" Margin="5,25,5,5" Width="81" Click="Execute_Click" Content="Execute Query" Height="51" IsEnabled="False" />
+            <Button x:Name="buttonExecute" Focusable="False" Margin="5,25,5,5" Width="81" Click="Execute_Click" Content="Fetch data" Height="51" IsEnabled="False" />
         </StackPanel>
         
         <Grid Margin="5" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
