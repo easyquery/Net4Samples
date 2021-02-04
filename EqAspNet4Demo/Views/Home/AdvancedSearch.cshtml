@@ -5,8 +5,8 @@
 }
 
 @section Styles {
-    <link rel="stylesheet" href="https://cdn.korzh.com/eq/6.1.4/eq.core.min.css">
-    <link rel="stylesheet" href="https://cdn.korzh.com/eq/6.1.4/eq.view.min.css">
+    <link rel="stylesheet" href="https://cdn.korzh.com/eq/7.0.0/eq.core.min.css">
+    <link rel="stylesheet" href="https://cdn.korzh.com/eq/7.0.0/eq.view.min.css">
 }
 
 <div class="eqjs-process-bar" id="ProcessBar"></div>
@@ -114,8 +114,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js" type="text/javascript"></script>
 
     <!-- EasyQuery script -->
-    <!--<script src="https://cdn.korzh.com/eq/6.1.4/eq.community.min.js"></script>-->
-    <script src="https://cdn.korzh.com/eq/6.1.4/eq.enterprise.min.js"></script>
+    <!--<script src="https://cdn.korzh.com/eq/7.0.0/eq.community.min.js"></script>-->
+    <script src="https://cdn.korzh.com/eq/7.0.0/eq.enterprise.min.js"></script>
 
     <!-- EasyQuery Advanced Search view initialization -->
     <script>
@@ -138,7 +138,7 @@
                 //Handlers
                 handlers: {
                     //Error handler
-                    onError: function (error) {
+                    onError: function (context, error) {
                         console.error(error.sourceError);
                     }
                 },
@@ -179,8 +179,7 @@
                             activateOnMouseOver: true
                         }
                     },
-                    resultGrid: {
-                        autoHeight: true,
+                    easyGrid: {
                         paging: {
                             enabled: true,
                             pageSize: 30

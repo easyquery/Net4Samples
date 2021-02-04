@@ -47,7 +47,7 @@
                 //Handlers
                 handlers: {
                     //Error handler
-                    onError: function (error) {
+                    onError: function (context, error) {
                         console.error(error.action + " error:\n" + error.text);
                     }
                 },

@@ -73,8 +73,8 @@ namespace EqDemo.Controllers
         /// </summary>
         /// <returns>An ActionResult object that contains a partial view with the filtered result set.</returns>
         [HttpPost]
-        [Route("models/{modelId}/queries/{queryId}/execute")]
-        public async Task<ActionResult> ApplyQueryFilter(string modelId, string queryId)
+        [Route("models/{modelId}/fetch")]
+        public async Task<ActionResult> ApplyQueryFilter(string modelId)
         {
             Request.InputStream.Position = 0;
             await _eqManager.ReadRequestContentFromStreamAsync(modelId, Request.InputStream);

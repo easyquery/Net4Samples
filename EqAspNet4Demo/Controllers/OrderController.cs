@@ -12,8 +12,6 @@ using Korzh.EasyQuery.Linq;
 using Korzh.EasyQuery.AspNet;
 
 using EqDemo.Models;
-using System.IO;
-using System.Text;
 
 namespace EqDemo.Controllers
 {
@@ -75,7 +73,7 @@ namespace EqDemo.Controllers
         /// </summary>
         /// <returns>An ActionResult object that contains a partial view with the filtered result set.</returns>
         [HttpPost]
-        [Route("models/{modelId}/queries/{queryId}/execute")]
+        [Route("models/{modelId}/fetch")]
         public async Task<ActionResult> ApplyQueryFilter(string modelId, string queryId)
         {
             Request.InputStream.Position = 0;
